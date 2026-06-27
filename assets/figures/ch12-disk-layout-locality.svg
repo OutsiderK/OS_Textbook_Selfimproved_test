@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title id="title">磁盘布局与局部性优化</title>
+  <desc id="desc">传统布局中 inode 远离数据会增加寻道，柱面组把 inode 和数据放近以减少磁头臂移动。</desc>
+  <rect width="900" height="360" fill="#f9faf8"/>
+  <text x="44" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">布局优化目标是减少磁头臂移动</text>
+  <text x="70" y="84" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#34495e">传统布局</text>
+  <rect x="70" y="106" width="310" height="54" fill="#e9eff8" stroke="#5271a3"/>
+  <text x="180" y="139" font-family="Arial, sans-serif" font-size="14" fill="#1f2933">inode 区</text>
+  <rect x="70" y="176" width="310" height="54" fill="#fff1d6" stroke="#a17228"/>
+  <text x="178" y="209" font-family="Arial, sans-serif" font-size="14" fill="#1f2933">数据区</text>
+  <path d="M225 160 C130 164 125 179 225 176" fill="none" stroke="#b04b3f" stroke-width="3"/>
+  <text x="80" y="268" font-family="Arial, sans-serif" font-size="14" fill="#475569">传统布局中 inode 远离数据会增加寻道</text>
+  <text x="502" y="84" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#34495e">柱面组布局</text>
+  <g>
+    <rect x="502" y="106" width="92" height="124" fill="#e9eff8" stroke="#5271a3"/>
+    <text x="522" y="136" font-family="Arial, sans-serif" font-size="13" fill="#1f2933">inode</text>
+    <rect x="594" y="106" width="126" height="124" fill="#fff1d6" stroke="#a17228"/>
+    <text x="634" y="136" font-family="Arial, sans-serif" font-size="13" fill="#1f2933">data</text>
+    <rect x="736" y="106" width="92" height="124" fill="#e9eff8" stroke="#5271a3"/>
+    <text x="756" y="136" font-family="Arial, sans-serif" font-size="13" fill="#1f2933">inode</text>
+  </g>
+  <path d="M548 164 C590 155 615 156 657 164" fill="none" stroke="#3a7d62" stroke-width="3"/>
+  <path d="M782 164 C734 155 702 156 657 164" fill="none" stroke="#3a7d62" stroke-width="3"/>
+  <text x="510" y="268" font-family="Arial, sans-serif" font-size="14" fill="#475569">按柱面组放置 inode 和数据可提高局部性</text>
+  <text x="510" y="294" font-family="Arial, sans-serif" font-size="14" fill="#475569">访问元数据和数据时，磁头臂移动距离更短</text>
+</svg>

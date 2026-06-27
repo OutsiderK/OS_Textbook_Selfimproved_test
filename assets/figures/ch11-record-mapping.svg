@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360" role="img" aria-labelledby="title desc">
+  <title id="title">逻辑记录到物理记录的映射</title>
+  <desc id="desc">用户看到的逻辑数据组织经存取方法映射为面向设备的物理数据组织。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 5; }
+      .method { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 5; }
+      .device { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 5; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="28" y="38" width="924" height="284" class="panel"/>
+  <text x="490" y="72" text-anchor="middle" class="head">三种记录关系：用户视角、系统视角、设备视角</text>
+
+  <rect x="70" y="125" width="230" height="86" class="user"/>
+  <text x="185" y="154" text-anchor="middle" class="small">逻辑数据组织面向用户</text>
+  <text x="185" y="180" text-anchor="middle" class="small">逻辑记录</text>
+  <text x="185" y="204" text-anchor="middle" class="note">应用程序按记录含义处理</text>
+
+  <rect x="375" y="118" width="230" height="100" class="method"/>
+  <text x="490" y="148" text-anchor="middle" class="small">存取方法承担逻辑到存储的映射</text>
+  <text x="490" y="175" text-anchor="middle" class="small">存储记录</text>
+  <text x="490" y="202" text-anchor="middle" class="note">附加控制信息后交给文件管理程序</text>
+
+  <rect x="680" y="125" width="230" height="86" class="device"/>
+  <text x="795" y="154" text-anchor="middle" class="small">物理数据组织面向设备</text>
+  <text x="795" y="180" text-anchor="middle" class="small">物理记录 / 块</text>
+  <text x="795" y="204" text-anchor="middle" class="note">主存与辅存交换的单位</text>
+
+  <path d="M300 168 L 375 168" class="arrow"/>
+  <path d="M605 168 L 680 168" class="arrow"/>
+
+  <text x="490" y="270" text-anchor="middle" class="note">读写路径：用户作业提出逻辑记录请求，文件系统按存取方法找到存储记录，再落到设备上的物理块。</text>
+</svg>

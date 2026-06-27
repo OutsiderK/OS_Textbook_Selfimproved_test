@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="470" viewBox="0 0 920 470" role="img" aria-labelledby="title desc">
+  <title id="title">工作集与 PFF 的页框控制</title>
+  <desc id="desc">工作集估计进程当前需要的页面集合，PFF 根据连续缺页间隔调整工作集尺寸。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#263238"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif; fill: #182024; }
+      .box { fill: #f8fbfc; stroke: #263238; stroke-width: 2; rx: 8; }
+      .soft { fill: #eef7f4; stroke: #52796f; stroke-width: 2; rx: 8; }
+      .warn { fill: #fff4e6; stroke: #9a5b00; stroke-width: 2; rx: 8; }
+      .mem { fill: #eef2ff; stroke: #384b9b; stroke-width: 2; rx: 8; }
+      .line { stroke: #263238; stroke-width: 2.3; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #66767c; stroke-width: 2; fill: none; stroke-dasharray: 7 5; marker-end: url(#arrow); }
+      .label { font-weight: 700; font-size: 22px; }
+      .small { font-size: 17px; }
+      .tiny { font-size: 15px; }
+    </style>
+  </defs>
+  <rect x="20" y="20" width="880" height="430" fill="#ffffff" stroke="#d7dee2" stroke-width="2" rx="10"/>
+  <text class="label" x="54" y="62">从“淘汰哪一页”走向“给进程多少页框”</text>
+
+  <rect class="box" x="64" y="120" width="184" height="88"/>
+  <text class="small" x="156" y="154" text-anchor="middle">进程访问序列</text>
+  <text class="tiny" x="156" y="184" text-anchor="middle">一段时间内反复落在少数页面</text>
+
+  <rect class="soft" x="330" y="106" width="224" height="116"/>
+  <text class="small" x="442" y="140" text-anchor="middle">工作集模型</text>
+  <text class="tiny" x="442" y="168" text-anchor="middle">窗口 (t-T,t) 内被引用的页</text>
+  <text class="tiny" x="442" y="194" text-anchor="middle">估计进程继续执行所需最少页面集合</text>
+
+  <rect class="mem" x="632" y="118" width="206" height="92"/>
+  <text class="small" x="735" y="150" text-anchor="middle">页框分配</text>
+  <text class="tiny" x="735" y="178" text-anchor="middle">工作集总尺寸不应超过主存块总数以避免抖动</text>
+
+  <rect class="warn" x="330" y="292" width="224" height="88"/>
+  <text class="small" x="442" y="324" text-anchor="middle">PFF 控制</text>
+  <text class="tiny" x="442" y="352" text-anchor="middle">PFF 根据连续缺页间隔调整工作集尺寸</text>
+
+  <path class="line" d="M248 164 H330"/>
+  <path class="line" d="M554 164 H632"/>
+  <path class="dash" d="M735 210 C714 282, 623 336, 554 336"/>
+  <path class="line" d="M330 336 C244 330, 178 278, 156 208"/>
+  <text class="tiny" x="612" y="286">缺页太密：增加页框</text>
+  <text class="tiny" x="166" y="318">缺页太稀：可收回页框</text>
+</svg>

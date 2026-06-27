@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
+  <title id="title">UNIX/Linux 多重索引结构</title>
+  <desc id="desc">inode 中保存直接索引和一级、二级、三级间接索引入口，逐级扩大可寻址块数。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .inode { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 5; }
+      .index { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 5; }
+      .block { fill: #edf8f3; stroke: #2f7d63; stroke-width: 1.8; rx: 5; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="24" y="34" width="932" height="356" class="panel"/>
+  <text x="490" y="66" text-anchor="middle" class="head">inode 中保存多级索引入口</text>
+
+  <rect x="72" y="120" width="190" height="178" class="inode"/>
+  <text x="167" y="148" text-anchor="middle" class="small">inode</text>
+  <text x="167" y="178" text-anchor="middle" class="note">直接块指针</text>
+  <text x="167" y="206" text-anchor="middle" class="note">一级间接索引入口</text>
+  <text x="167" y="234" text-anchor="middle" class="note">二级间接索引入口</text>
+  <text x="167" y="262" text-anchor="middle" class="note">三级间接索引入口</text>
+
+  <rect x="360" y="92" width="170" height="48" class="block"/>
+  <text x="445" y="122" text-anchor="middle" class="small">数据块</text>
+  <text x="445" y="162" text-anchor="middle" class="note">直接索引适合小文件快速访问</text>
+
+  <rect x="360" y="190" width="170" height="48" class="index"/>
+  <text x="445" y="220" text-anchor="middle" class="small">一级间接块</text>
+  <rect x="620" y="190" width="170" height="48" class="block"/>
+  <text x="705" y="220" text-anchor="middle" class="small">数据块集合</text>
+
+  <rect x="360" y="286" width="170" height="48" class="index"/>
+  <text x="445" y="316" text-anchor="middle" class="small">二级 / 三级间接块</text>
+  <rect x="620" y="286" width="240" height="48" class="block"/>
+  <text x="740" y="316" text-anchor="middle" class="small">逐级扩大可寻址块数</text>
+
+  <path d="M262 178 L 360 116" class="arrow"/>
+  <path d="M262 206 L 360 214" class="arrow"/>
+  <path d="M530 214 L 620 214" class="arrow"/>
+  <path d="M262 246 L 360 310" class="arrow"/>
+  <path d="M530 310 L 620 310" class="arrow"/>
+
+  <text x="490" y="364" text-anchor="middle" class="note">一级/二级/三级间接索引逐级扩大可寻址块数，同时保留小文件的直接块快速路径。</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">IBM VM/370 与 CMS 的虚拟机结构</title>
+  <desc id="desc">VM/370 直接运行在 370 裸硬件之上，向上虚拟出多台相同的 370 机器，每台虚拟机上再运行单用户的 CMS 系统。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .hw { fill: #eceff1; stroke: #6b7780; stroke-width: 2; }
+      .vmm { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .vm { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.8; }
+      .guest { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 1.6; }
+      .label { font-size: 18px; font-weight: 700; }
+      .comp-label { font-size: 15px; font-weight: 700; }
+      .sub { font-size: 12px; fill: #3d4b52; }
+      .note { font-size: 13px; fill: #3d4b52; }
+    </style>
+  </defs>
+  <rect width="760" height="470" class="frame"/>
+  <text x="40" y="40" class="label" font-size="22">虚拟机结构：IBM VM/370 与 CMS</text>
+
+  <!-- guests CMS on virtual machines -->
+  <g>
+    <rect x="120" y="76" width="160" height="48" class="guest"/>
+    <text x="200" y="105" text-anchor="middle" class="comp-label">CMS</text>
+    <rect x="300" y="76" width="160" height="48" class="guest"/>
+    <text x="380" y="105" text-anchor="middle" class="comp-label">CMS</text>
+    <rect x="480" y="76" width="160" height="48" class="guest"/>
+    <text x="560" y="105" text-anchor="middle" class="comp-label">CMS</text>
+  </g>
+  <g>
+    <rect x="120" y="124" width="160" height="56" class="vm"/>
+    <text x="200" y="157" text-anchor="middle" class="comp-label">虚拟 370</text>
+    <rect x="300" y="124" width="160" height="56" class="vm"/>
+    <text x="380" y="157" text-anchor="middle" class="comp-label">虚拟 370</text>
+    <rect x="480" y="124" width="160" height="56" class="vm"/>
+    <text x="560" y="157" text-anchor="middle" class="comp-label">虚拟 370</text>
+  </g>
+
+  <!-- VMM -->
+  <rect x="120" y="206" width="520" height="74" class="vmm"/>
+  <text x="380" y="240" text-anchor="middle" class="label" font-size="17">VM/370</text>
+  <text x="380" y="263" text-anchor="middle" class="sub">虚拟机监控程序：把一台真实机器复制成多台相同的虚拟机</text>
+
+  <!-- bare hardware -->
+  <rect x="120" y="306" width="520" height="64" class="hw"/>
+  <text x="380" y="344" text-anchor="middle" class="comp-label">370 裸硬件（bare hardware）</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="40" y="412" class="note">VM/370 位于裸硬件之上</text>
+  <text x="40" y="434" class="note">多个 CMS 运行在虚拟机上</text>
+</svg>

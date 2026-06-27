@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360" role="img" aria-labelledby="title desc">
+  <title id="title">连接文件的指针链</title>
+  <desc id="desc">目录项指向链首，记录之间通过指针连接，逻辑顺序不要求物理连续。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .dir { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 5; }
+      .block { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 5; }
+      .fat { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 5; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="26" y="36" width="928" height="286" class="panel"/>
+  <text x="490" y="68" text-anchor="middle" class="head">连接文件：用指针保存逻辑顺序</text>
+
+  <rect x="62" y="130" width="190" height="72" class="dir"/>
+  <text x="157" y="158" text-anchor="middle" class="small">文件目录项指向链首</text>
+  <text x="157" y="184" text-anchor="middle" class="note">first block = B7</text>
+
+  <rect x="330" y="112" width="120" height="66" class="block"/>
+  <text x="390" y="139" text-anchor="middle" class="small">记录 B7</text>
+  <text x="390" y="162" text-anchor="middle" class="note">next → B2</text>
+  <rect x="520" y="198" width="120" height="66" class="block"/>
+  <text x="580" y="225" text-anchor="middle" class="small">记录 B2</text>
+  <text x="580" y="248" text-anchor="middle" class="note">next → B9</text>
+  <rect x="710" y="112" width="120" height="66" class="block"/>
+  <text x="770" y="139" text-anchor="middle" class="small">记录 B9</text>
+  <text x="770" y="162" text-anchor="middle" class="note">next → EOF</text>
+
+  <path d="M252 166 L 330 145" class="arrow"/>
+  <path d="M450 154 C 495 158, 505 205, 520 225" class="arrow"/>
+  <path d="M640 225 C 690 220, 690 150, 710 145" class="arrow"/>
+
+  <rect x="330" y="282" width="500" height="34" class="fat"/>
+  <text x="580" y="304" text-anchor="middle" class="small">FAT 系列文件系统可体现连接文件思想：把 next 指针集中放入 FAT 表</text>
+
+  <text x="490" y="92" text-anchor="middle" class="note">记录之间通过指针连接，逻辑顺序可独立于物理顺序；代价是随机定位要沿链查找。</text>
+</svg>

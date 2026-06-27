@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" role="img" aria-labelledby="title desc">
+  <title id="title">进程的五态模型</title>
+  <desc id="desc">五态模型在运行、就绪、等待三态核心两端补上新建态和终止态：新建态提交后进入就绪态，运行态完成后进入终止态，中间的运行、就绪、等待仍保持三态核心转换。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .run { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .ready { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .wait { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 2; }
+      .edgest { fill: #f3eefb; stroke: #6f4aa0; stroke-width: 2; }
+      .core { fill: none; stroke: #c2b27a; stroke-width: 1.4; stroke-dasharray: 6 4; }
+      .state { font-size: 17px; font-weight: 700; }
+      .edge { font-size: 12.5px; fill: #2f4858; }
+      .band { font-size: 13px; font-weight: 700; fill: #8a7430; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.6; fill: none; }
+    </style>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="820" height="470" class="frame"/>
+  <text x="36" y="38" class="state" font-size="21">图 5-2：进程的五态模型</text>
+
+  <!-- three-state core dashed box -->
+  <rect x="214" y="70" width="392" height="250" rx="10" class="core"/>
+  <text x="410" y="92" text-anchor="middle" class="band">三态核心</text>
+
+  <!-- new -->
+  <rect x="30" y="170" width="130" height="56" rx="8" class="edgest"/>
+  <text x="95" y="204" text-anchor="middle" class="state">新建态</text>
+
+  <!-- ready -->
+  <rect x="240" y="170" width="130" height="56" rx="8" class="ready"/>
+  <text x="305" y="204" text-anchor="middle" class="state">就绪态</text>
+
+  <!-- run -->
+  <rect x="450" y="110" width="130" height="56" rx="8" class="run"/>
+  <text x="515" y="144" text-anchor="middle" class="state">运行态</text>
+
+  <!-- wait -->
+  <rect x="450" y="230" width="130" height="56" rx="8" class="wait"/>
+  <text x="515" y="264" text-anchor="middle" class="state">等待态</text>
+
+  <!-- terminated -->
+  <rect x="660" y="170" width="130" height="56" rx="8" class="edgest"/>
+  <text x="725" y="204" text-anchor="middle" class="state">终止态</text>
+
+  <!-- new -> ready -->
+  <line x1="160" y1="198" x2="238" y2="198" class="arrow" marker-end="url(#a2)"/>
+  <text x="150" y="160" class="edge">提交 / 收容</text>
+
+  <!-- ready -> run -->
+  <line x1="370" y1="188" x2="448" y2="146" class="arrow" marker-end="url(#a2)"/>
+  <text x="356" y="150" class="edge">选中</text>
+
+  <!-- run -> ready -->
+  <line x1="455" y1="158" x2="372" y2="196" class="arrow" marker-end="url(#a2)"/>
+  <text x="372" y="232" class="edge">落选</text>
+
+  <!-- run -> wait -->
+  <line x1="515" y1="166" x2="515" y2="228" class="arrow" marker-end="url(#a2)"/>
+  <text x="524" y="202" class="edge">等待事件</text>
+
+  <!-- wait -> ready -->
+  <line x1="450" y1="262" x2="372" y2="212" class="arrow" marker-end="url(#a2)"/>
+  <text x="372" y="284" class="edge">事件出现</text>
+
+  <!-- run -> terminated -->
+  <line x1="580" y1="140" x2="700" y2="172" class="arrow" marker-end="url(#a2)"/>
+  <text x="600" y="150" class="edge">完成 / 退出</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="378" class="note">新建态提交后进入就绪态</text>
+  <text x="36" y="400" class="note">运行态可完成进入终止态</text>
+  <text x="36" y="422" class="note">运行/就绪/等待仍保持三态核心转换</text>
+</svg>

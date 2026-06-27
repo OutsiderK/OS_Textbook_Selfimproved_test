@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700" viewBox="0 0 960 700" role="img" aria-labelledby="title desc">
+  <title id="title">管程的工作流程</title>
+  <desc id="desc">调用进程经入口排队进入管程，过程执行中可在条件变量上 wait 进入等待队列，signal 唤醒等待者并可能把发出者送入 urgent queue，最后从出口离开。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d97706" />
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#16a34a" />
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="920" height="660" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="480" y="54" text-anchor="middle" font-size="22" font-family="sans-serif" fill="#0f172a">管程的工作流程</text>
+
+  <!-- 入口与等待区域 -->
+  <rect x="50" y="100" width="180" height="56" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="140" y="126" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#1e3a8a">等待调用的进程队列</text>
+  <text x="140" y="146" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#1e3a8a">（管程等待区域）</text>
+  <line x1="230" y1="128" x2="320" y2="128" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowBlue)"/>
+  <text x="275" y="115" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#2563eb">入口</text>
+
+  <!-- 管程主体 -->
+  <rect x="324" y="80" width="430" height="470" rx="14" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="539" y="108" text-anchor="middle" font-size="16" font-family="sans-serif" fill="#0f172a">管程（一次只允许一个进程在内执行）</text>
+
+  <rect x="352" y="126" width="374" height="44" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.6"/>
+  <text x="539" y="153" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#334155">局部数据（共享变量，只能由管程过程访问）</text>
+
+  <rect x="352" y="190" width="374" height="120" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+  <text x="539" y="215" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#1e3a8a">过程 1 … 过程 k（define 的外部可调用过程）</text>
+  <text x="539" y="241" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#334155">条件不满足 → wait(ci)　条件成立 → signal(ci)</text>
+  <text x="539" y="265" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#334155">执行完毕 → 从出口离开</text>
+  <text x="539" y="293" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#64748b">调用进程从入口进入管程，逐个排队执行过程体</text>
+
+  <!-- signal 后让位：过程区直落 urgent queue -->
+  <line x1="650" y1="310" x2="650" y2="328" stroke="#d97706" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <text x="640" y="325" text-anchor="end" font-size="12" font-family="sans-serif" fill="#92400e">signal 后让位</text>
+
+  <!-- urgent queue -->
+  <rect x="352" y="332" width="374" height="56" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+  <text x="539" y="356" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#92400e">urgent queue（紧急等待队列）</text>
+  <text x="539" y="376" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#92400e">发出 signal 的进程在此等待，让位给被唤醒者</text>
+
+  <rect x="352" y="412" width="374" height="44" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.6"/>
+  <text x="539" y="439" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#334155">初始化代码（建立共享变量的初始状态）</text>
+
+  <!-- 出口 -->
+  <line x1="539" y1="550" x2="539" y2="586" stroke="#334155" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="569" y="575" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#334155">出口</text>
+
+  <!-- 条件变量等待队列 -->
+  <rect x="784" y="150" width="150" height="64" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8"/>
+  <text x="859" y="176" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#991b1b">condition c1</text>
+  <text x="859" y="196" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#991b1b">等待队列</text>
+  <rect x="784" y="240" width="150" height="64" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8"/>
+  <text x="859" y="266" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#991b1b">condition cn</text>
+  <text x="859" y="286" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#991b1b">等待队列</text>
+
+  <line x1="754" y1="210" x2="780" y2="194" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="772" y="176" text-anchor="end" font-size="12" font-family="sans-serif" fill="#dc2626">wait(ci)</text>
+  <line x1="780" y1="282" x2="754" y2="266" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="772" y="320" text-anchor="end" font-size="12" font-family="sans-serif" fill="#16a34a">signal(ci) 唤醒</text>
+
+  <!-- 注释 -->
+  <text x="60" y="606" font-size="13.5" font-family="sans-serif" fill="#475569">① 调用进程从入口进入管程；管程互斥，同一时刻最多一个进程在内执行</text>
+  <text x="60" y="628" font-size="13.5" font-family="sans-serif" fill="#991b1b">② 进程不能继续时在 condition 上 wait 并进入等待队列，释放管程</text>
+  <text x="60" y="650" font-size="13.5" font-family="sans-serif" fill="#166534">③ signal 可能唤醒条件变量等待者，被唤醒者优先接管管程</text>
+  <text x="60" y="672" font-size="13.5" font-family="sans-serif" fill="#92400e">④ urgent queue 处理 signal 后的管程互斥冲突</text>
+</svg>

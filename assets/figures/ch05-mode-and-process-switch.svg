@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" role="img" aria-labelledby="title desc">
+  <title id="title">模式切换与进程切换</title>
+  <desc id="desc">模式切换是同一进程在用户态和核心态之间的纵向移动；进程切换是从一个进程换到另一个进程的横向移动，由处于核心态的调度进程完成切换判断。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.8; }
+      .kern { fill: #fff1d6; stroke: #b8791f; stroke-width: 1.8; }
+      .sched { fill: #f3eefb; stroke: #6f4aa0; stroke-width: 2; }
+      .panel { fill: none; stroke: #c7ccd1; stroke-width: 1.4; }
+      .band { font-size: 13px; font-weight: 700; fill: #2f4858; }
+      .lbl { font-size: 15px; font-weight: 700; }
+      .edge { font-size: 12.5px; fill: #2f4858; }
+      .modesw { font-size: 12.5px; font-weight: 700; fill: #3867a8; }
+      .procsw { font-size: 12.5px; font-weight: 700; fill: #6f4aa0; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.7; fill: none; }
+      .divider { stroke: #9aa3aa; stroke-width: 1.2; stroke-dasharray: 5 4; }
+    </style>
+    <marker id="a6" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="860" height="520" class="frame"/>
+  <text x="36" y="38" class="lbl" font-size="21">图 5-6：模式切换与进程切换</text>
+
+  <!-- mode bands -->
+  <text x="40" y="104" class="band">用户态</text>
+  <text x="40" y="250" class="band">核心态</text>
+  <line x1="120" y1="186" x2="820" y2="186" class="divider"/>
+
+  <!-- process P1 -->
+  <rect x="150" y="76" width="200" height="56" rx="8" class="user"/>
+  <text x="250" y="110" text-anchor="middle" class="lbl">进程 P1（用户态运行）</text>
+  <rect x="150" y="214" width="200" height="56" rx="8" class="kern"/>
+  <text x="250" y="248" text-anchor="middle" class="lbl">进程 P1（核心态运行）</text>
+
+  <!-- mode switch within P1 (vertical) -->
+  <line x1="222" y1="132" x2="222" y2="212" class="arrow" marker-end="url(#a6)"/>
+  <line x1="278" y1="212" x2="278" y2="132" class="arrow" marker-end="url(#a6)"/>
+  <text x="150" y="178" class="modesw">模式切换（陷入/返回）</text>
+
+  <!-- scheduler in kernel -->
+  <rect x="380" y="300" width="220" height="56" rx="8" class="sched"/>
+  <text x="490" y="334" text-anchor="middle" class="lbl">调度进程（核心态）</text>
+  <line x1="250" y1="270" x2="430" y2="300" class="arrow" marker-end="url(#a6)"/>
+  <line x1="550" y1="300" x2="660" y2="270" class="arrow" marker-end="url(#a6)"/>
+
+  <!-- process P2 -->
+  <rect x="630" y="214" width="200" height="56" rx="8" class="kern"/>
+  <text x="730" y="248" text-anchor="middle" class="lbl">进程 P2（核心态运行）</text>
+  <rect x="630" y="76" width="200" height="56" rx="8" class="user"/>
+  <text x="730" y="110" text-anchor="middle" class="lbl">进程 P2（用户态运行）</text>
+
+  <!-- mode switch within P2 -->
+  <line x1="702" y1="212" x2="702" y2="132" class="arrow" marker-end="url(#a6)"/>
+  <text x="636" y="178" class="modesw">模式切换</text>
+
+  <!-- process switch (horizontal) -->
+  <text x="372" y="284" class="procsw">进程切换（P1 → P2）</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="416" class="note">模式切换发生在用户态和核心态之间</text>
+  <text x="36" y="438" class="note">进程切换发生在不同进程之间</text>
+  <text x="36" y="460" class="note">调度进程在核心态完成切换判断</text>
+</svg>

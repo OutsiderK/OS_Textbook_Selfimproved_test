@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">系统调用陷入、分派与返回</title>
+  <desc id="desc">展示系统调用从用户态陷入内核、查入口地址表、执行服务例程并返回的过程。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#29465b"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .step { fill: #f4fbf9; stroke: #2f4858; stroke-width: 2; rx: 8; }
+      .kernel { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 8; }
+      .label { font-size: 17px; font-weight: 700; }
+      .small { font-size: 13px; }
+      .arrow { stroke: #29465b; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="36" y="46" width="180" height="70" class="user"/>
+  <text x="126" y="76" text-anchor="middle" class="label">用户程序发起陷入或访管指令</text>
+  <text x="126" y="99" text-anchor="middle" class="small">trap / syscall / sysenter</text>
+
+  <rect x="262" y="46" width="160" height="70" class="kernel"/>
+  <text x="342" y="76" text-anchor="middle" class="label">保护 CPU 现场</text>
+  <text x="342" y="99" text-anchor="middle" class="small">保存返回所需状态</text>
+
+  <rect x="468" y="46" width="160" height="70" class="kernel"/>
+  <text x="548" y="76" text-anchor="middle" class="label">取系统功能号</text>
+  <text x="548" y="99" text-anchor="middle" class="small">识别请求哪项服务</text>
+
+  <rect x="674" y="46" width="160" height="70" class="kernel"/>
+  <text x="754" y="76" text-anchor="middle" class="label">查入口地址表</text>
+  <text x="754" y="99" text-anchor="middle" class="small">入口地址表用于定位服务例程</text>
+
+  <path d="M216 81 H262" class="arrow"/>
+  <path d="M422 81 H468" class="arrow"/>
+  <path d="M628 81 H674" class="arrow"/>
+
+  <rect x="674" y="190" width="160" height="80" class="kernel"/>
+  <text x="754" y="221" text-anchor="middle" class="label">执行相应系统调用处理子程序</text>
+  <text x="754" y="246" text-anchor="middle" class="small">服务例程在内核态执行</text>
+  <path d="M754 116 V190" class="arrow"/>
+
+  <rect x="468" y="190" width="160" height="80" class="kernel"/>
+  <text x="548" y="221" text-anchor="middle" class="label">恢复现场并返回</text>
+  <text x="548" y="246" text-anchor="middle" class="small">处理完成后返回用户态</text>
+  <path d="M674 230 H628" class="arrow"/>
+
+  <rect x="262" y="190" width="160" height="80" class="user"/>
+  <text x="342" y="221" text-anchor="middle" class="label">用户空间继续执行</text>
+  <text x="342" y="246" text-anchor="middle" class="small">返回调用点附近</text>
+  <path d="M468 230 H422" class="arrow"/>
+
+  <rect x="100" y="344" width="780" height="96" class="step"/>
+  <text x="490" y="374" text-anchor="middle" class="label">read(fd, buffer, nbytes) 的典型路径</text>
+  <text x="490" y="402" text-anchor="middle" class="small">用户程序依次压入 nbytes、buffer 地址和 fd → 库过程 read 将系统调用号放入寄存器 → trap 进入内核空间</text>
+  <text x="490" y="426" text-anchor="middle" class="small">内核分派到 system call handler → 返回用户空间并清理栈帧</text>
+</svg>

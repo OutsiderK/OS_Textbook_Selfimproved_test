@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="380" viewBox="0 0 980 380" role="img" aria-labelledby="title desc">
+  <title id="title">记录成组与分解</title>
+  <desc id="desc">系统缓冲区在用户缓冲区和物理记录之间完成成组与分解。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .box { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .logical { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 4; }
+      .buffer { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 4; }
+      .physical { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 4; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="26" y="36" width="928" height="306" class="box"/>
+  <text x="490" y="68" text-anchor="middle" class="head">成组/分解：让记录大小适配物理块大小</text>
+
+  <text x="170" y="112" text-anchor="middle" class="small">用户缓冲区</text>
+  <rect x="70" y="135" width="200" height="46" class="logical"/>
+  <text x="170" y="164" text-anchor="middle" class="small">逻辑记录 R1</text>
+  <rect x="70" y="194" width="200" height="46" class="logical"/>
+  <text x="170" y="223" text-anchor="middle" class="small">逻辑记录 R2</text>
+  <rect x="70" y="253" width="200" height="46" class="logical"/>
+  <text x="170" y="282" text-anchor="middle" class="small">逻辑记录 R3</text>
+
+  <text x="490" y="112" text-anchor="middle" class="small">系统缓冲区位于用户缓冲区和物理记录之间</text>
+  <rect x="370" y="145" width="240" height="126" class="buffer"/>
+  <text x="490" y="177" text-anchor="middle" class="small">成组：R1 + R2 + R3</text>
+  <text x="490" y="207" text-anchor="middle" class="small">分解：块内记录拆回用户请求</text>
+  <text x="490" y="238" text-anchor="middle" class="note">成组/分解用于适配逻辑记录与物理块大小</text>
+
+  <text x="810" y="112" text-anchor="middle" class="small">物理记录</text>
+  <rect x="700" y="165" width="220" height="86" class="physical"/>
+  <text x="810" y="198" text-anchor="middle" class="small">多个逻辑记录可组成一个物理记录</text>
+  <text x="810" y="226" text-anchor="middle" class="note">按块与外存交换</text>
+
+  <path d="M270 158 L 370 178" class="arrow"/>
+  <path d="M270 217 L 370 208" class="arrow"/>
+  <path d="M270 276 L 370 238" class="arrow"/>
+  <path d="M610 208 L 700 208" class="arrow"/>
+</svg>

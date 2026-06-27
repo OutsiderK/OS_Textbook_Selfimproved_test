@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" role="img" aria-labelledby="title desc">
+  <title id="title">多级反馈队列</title>
+  <desc id="desc">多级反馈队列设若干条优先级不同的就绪队列：高优先级队列时间片较短且被优先调度；进程用完时间片可能被降级到下一条更低优先、时间片更长的队列；等待过久的进程会被自动提升回高优先级队列以避免饥饿；同一条队列内部通常按先来先服务或时间片轮转调度。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .q1 { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .q2 { fill: #f3eefb; stroke: #6f4aa0; stroke-width: 2; }
+      .q3 { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 2; }
+      .cpu { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .slot { fill: #ffffff; stroke: #8aa0c4; stroke-width: 1; }
+      .lbl { font-size: 14px; font-weight: 700; }
+      .meta { font-size: 12.5px; fill: #2f4858; }
+      .demote { font-size: 12.5px; font-weight: 700; fill: #b06a3a; }
+      .promote { font-size: 12.5px; font-weight: 700; fill: #2f8f5b; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.7; fill: none; }
+      .darrow { stroke: #b06a3a; stroke-width: 1.7; fill: none; }
+      .parrow { stroke: #2f8f5b; stroke-width: 1.7; fill: none; }
+    </style>
+    <marker id="am" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+    <marker id="amd" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#b06a3a"/>
+    </marker>
+    <marker id="amp" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#2f8f5b"/>
+    </marker>
+  </defs>
+  <rect width="860" height="520" class="frame"/>
+  <text x="36" y="38" class="lbl" font-size="21">图 6-3：多级反馈队列</text>
+
+  <!-- Q1 -->
+  <rect x="150" y="76" width="320" height="44" rx="6" class="q1"/>
+  <rect x="160" y="84" width="48" height="28" class="slot"/>
+  <rect x="212" y="84" width="48" height="28" class="slot"/>
+  <text x="60" y="103" class="lbl">高优先级</text>
+  <text x="392" y="103" text-anchor="middle" class="lbl">队列 1</text>
+  <text x="150" y="138" class="meta">时间片最短，优先被调度</text>
+
+  <!-- Q2 -->
+  <rect x="150" y="178" width="320" height="44" rx="6" class="q2"/>
+  <rect x="160" y="186" width="48" height="28" class="slot"/>
+  <text x="60" y="205" class="lbl">中优先级</text>
+  <text x="392" y="205" text-anchor="middle" class="lbl">队列 2</text>
+  <text x="150" y="240" class="meta">时间片较长</text>
+
+  <!-- Q3 -->
+  <rect x="150" y="280" width="320" height="44" rx="6" class="q3"/>
+  <rect x="160" y="288" width="48" height="28" class="slot"/>
+  <rect x="212" y="288" width="48" height="28" class="slot"/>
+  <text x="60" y="307" class="lbl">低优先级</text>
+  <text x="392" y="307" text-anchor="middle" class="lbl">队列 3</text>
+  <text x="150" y="342" class="meta">时间片最长，成批推进</text>
+
+  <!-- CPU -->
+  <rect x="640" y="160" width="150" height="58" rx="8" class="cpu"/>
+  <text x="715" y="195" text-anchor="middle" class="lbl">CPU</text>
+
+  <!-- dispatch arrows to CPU (priority order) -->
+  <line x1="470" y1="98" x2="640" y2="180" class="arrow" marker-end="url(#am)"/>
+  <line x1="470" y1="200" x2="638" y2="190" class="arrow" marker-end="url(#am)"/>
+  <line x1="470" y1="302" x2="640" y2="200" class="arrow" marker-end="url(#am)"/>
+  <text x="486" y="150" class="meta">先调度高优先级队列</text>
+
+  <!-- demotion arrows (time slice used up) -->
+  <path d="M120,120 L120,178" class="darrow" marker-end="url(#amd)"/>
+  <path d="M120,222 L120,280" class="darrow" marker-end="url(#amd)"/>
+  <text x="14" y="160" class="demote">时间片</text>
+  <text x="14" y="176" class="demote">用完降级</text>
+
+  <!-- promotion arrow (waited too long) -->
+  <path d="M512,302 L560,302 L560,98 L472,98" class="parrow" marker-end="url(#amp)"/>
+  <text x="566" y="206" class="promote">等待过久</text>
+  <text x="566" y="222" class="promote">自动提升</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="392" class="note">高优先级队列时间片较短且优先占用处理器</text>
+  <text x="36" y="414" class="note">时间片用完可能降级</text>
+  <text x="36" y="436" class="note">等待过久可能自动提升以避免饥饿</text>
+  <text x="36" y="458" class="note">同队列通常按 FCFS 或时间片轮转原则调度</text>
+</svg>

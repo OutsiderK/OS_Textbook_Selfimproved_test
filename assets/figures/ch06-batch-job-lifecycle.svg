@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" role="img" aria-labelledby="title desc">
+  <title id="title">批处理作业的生命周期与三级调度</title>
+  <desc id="desc">作业依次经历提交、收容（后备）、执行、完成四个阶段：高级调度决定后备作业进入系统并建立进程，执行期间中级调度负责内存负载平衡、低级调度负责处理器分派，最后作业完成退出系统。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .stage { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .exec { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .done { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 2; }
+      .state { font-size: 16px; font-weight: 700; }
+      .sched { font-size: 12.5px; font-weight: 700; fill: #6f4aa0; }
+      .edge { font-size: 12.5px; fill: #2f4858; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.7; fill: none; }
+    </style>
+    <marker id="ab" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="860" height="470" class="frame"/>
+  <text x="36" y="38" class="state" font-size="21">图 6-2：批处理作业的生命周期与三级调度</text>
+
+  <!-- stage boxes -->
+  <rect x="34" y="150" width="150" height="58" rx="8" class="stage"/>
+  <text x="109" y="185" text-anchor="middle" class="state">提交 / 收容</text>
+  <text x="109" y="230" text-anchor="middle" class="edge">后备状态（外存）</text>
+
+  <rect x="356" y="150" width="150" height="58" rx="8" class="exec"/>
+  <text x="431" y="185" text-anchor="middle" class="state">执行</text>
+  <text x="431" y="230" text-anchor="middle" class="edge">执行状态（内存）</text>
+
+  <rect x="676" y="150" width="150" height="58" rx="8" class="done"/>
+  <text x="751" y="185" text-anchor="middle" class="state">完成</text>
+  <text x="751" y="230" text-anchor="middle" class="edge">退出系统</text>
+
+  <!-- high-level scheduling: 收容 -> 执行 -->
+  <line x1="184" y1="179" x2="354" y2="179" class="arrow" marker-end="url(#ab)"/>
+  <text x="200" y="138" class="sched">高级调度</text>
+  <text x="200" y="167" class="edge">决定后备作业进入系统、建立进程</text>
+
+  <!-- exec -> done -->
+  <line x1="506" y1="179" x2="674" y2="179" class="arrow" marker-end="url(#ab)"/>
+  <text x="540" y="167" class="edge">跑完退出</text>
+
+  <!-- mid/low-level scheduling acting during execution -->
+  <line x1="431" y1="208" x2="431" y2="262" class="arrow" marker-end="url(#ab)"/>
+  <rect x="300" y="262" width="262" height="70" rx="8" fill="#f3eefb" stroke="#6f4aa0" stroke-width="1.6"/>
+  <text x="431" y="288" text-anchor="middle" class="sched">执行期内的两级调度</text>
+  <text x="431" y="309" text-anchor="middle" class="edge">中级调度：内存负载平衡（换入换出）</text>
+  <text x="431" y="327" text-anchor="middle" class="edge">低级调度：处理器分派（选下一个进程）</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="378" class="note">作业经历提交/收容/执行/完成</text>
+  <text x="36" y="400" class="note">高级调度决定后备作业进入系统</text>
+  <text x="36" y="422" class="note">中级调度负责执行期间内存负载平衡</text>
+  <text x="36" y="444" class="note">低级调度负责处理器分派</text>
+</svg>

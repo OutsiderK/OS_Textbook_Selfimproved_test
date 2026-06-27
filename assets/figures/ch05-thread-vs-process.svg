@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580" role="img" aria-labelledby="title desc">
+  <title id="title">单线程进程与多线程进程的结构对照</title>
+  <desc id="desc">进程是资源分配和保护单位，线程是处理器调度和分派单位。同一进程中的多个线程共享 PCB、代码段、数据段等主存空间和资源；每个线程各自拥有 TCB 以及自己的用户栈和可选的系统栈。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .proc { fill: #ffffff; stroke: #3867a8; stroke-width: 2; }
+      .shared { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.4; }
+      .pcb { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 1.6; }
+      .tcb { fill: #fff1d6; stroke: #b8791f; stroke-width: 1.6; }
+      .stk { fill: #fff8e8; stroke: #b8791f; stroke-width: 1.1; }
+      .title2 { font-size: 15px; font-weight: 700; fill: #2f4858; }
+      .lbl { font-size: 13.5px; font-weight: 700; }
+      .sub { font-size: 11.5px; fill: #3d4b52; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+    </style>
+  </defs>
+  <rect width="900" height="580" class="frame"/>
+  <text x="36" y="36" class="lbl" font-size="21">图 5-7：单线程进程与多线程进程的结构对照</text>
+
+  <!-- left: single-threaded process -->
+  <rect x="34" y="58" width="400" height="330" rx="10" class="proc"/>
+  <text x="50" y="84" class="title2">单线程进程</text>
+  <rect x="54" y="98" width="360" height="46" rx="6" class="pcb"/>
+  <text x="234" y="126" text-anchor="middle" class="lbl">PCB（每进程资源信息）</text>
+  <rect x="54" y="152" width="360" height="86" rx="6" class="shared"/>
+  <text x="234" y="184" text-anchor="middle" class="lbl">代码段 / 数据段 / 已分配资源</text>
+  <text x="234" y="210" text-anchor="middle" class="sub">进程是资源分配和保护单位</text>
+  <rect x="120" y="252" width="100" height="56" rx="6" class="tcb"/>
+  <text x="170" y="284" text-anchor="middle" class="lbl">TCB</text>
+  <rect x="244" y="252" width="80" height="56" rx="6" class="stk"/>
+  <text x="284" y="277" text-anchor="middle" class="sub">用户栈</text>
+  <text x="284" y="295" text-anchor="middle" class="sub">系统栈</text>
+  <text x="234" y="344" text-anchor="middle" class="sub">单线程：一个执行流</text>
+
+  <!-- right: multi-threaded process -->
+  <rect x="466" y="58" width="400" height="330" rx="10" class="proc"/>
+  <text x="482" y="84" class="title2">多线程进程</text>
+  <rect x="486" y="98" width="360" height="46" rx="6" class="pcb"/>
+  <text x="666" y="126" text-anchor="middle" class="lbl">PCB（共享，每进程一份）</text>
+  <rect x="486" y="152" width="360" height="60" rx="6" class="shared"/>
+  <text x="666" y="178" text-anchor="middle" class="lbl">共享代码段 / 数据段 / 资源</text>
+  <text x="666" y="198" text-anchor="middle" class="sub">线程共享主存空间和资源</text>
+
+  <!-- thread 1 -->
+  <rect x="486" y="226" width="110" height="120" rx="6" class="tcb"/>
+  <text x="541" y="250" text-anchor="middle" class="lbl">线程 1</text>
+  <text x="541" y="270" text-anchor="middle" class="sub">TCB</text>
+  <rect x="498" y="282" width="86" height="24" class="stk"/>
+  <text x="541" y="299" text-anchor="middle" class="sub">用户栈</text>
+  <rect x="498" y="312" width="86" height="24" class="stk"/>
+  <text x="541" y="329" text-anchor="middle" class="sub">系统栈</text>
+
+  <!-- thread 2 -->
+  <rect x="606" y="226" width="110" height="120" rx="6" class="tcb"/>
+  <text x="661" y="250" text-anchor="middle" class="lbl">线程 2</text>
+  <text x="661" y="270" text-anchor="middle" class="sub">TCB</text>
+  <rect x="618" y="282" width="86" height="24" class="stk"/>
+  <text x="661" y="299" text-anchor="middle" class="sub">用户栈</text>
+  <rect x="618" y="312" width="86" height="24" class="stk"/>
+  <text x="661" y="329" text-anchor="middle" class="sub">系统栈</text>
+
+  <!-- thread 3 -->
+  <rect x="726" y="226" width="110" height="120" rx="6" class="tcb"/>
+  <text x="781" y="250" text-anchor="middle" class="lbl">线程 3</text>
+  <text x="781" y="270" text-anchor="middle" class="sub">TCB</text>
+  <rect x="738" y="282" width="86" height="24" class="stk"/>
+  <text x="781" y="299" text-anchor="middle" class="sub">用户栈</text>
+  <rect x="738" y="312" width="86" height="24" class="stk"/>
+  <text x="781" y="329" text-anchor="middle" class="sub">系统栈</text>
+
+  <text x="666" y="366" text-anchor="middle" class="sub">线程是处理器调度和分派单位</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="424" class="note">进程是资源分配和保护单位</text>
+  <text x="36" y="446" class="note">线程是处理器调度和分派单位</text>
+  <text x="36" y="468" class="note">同一进程中线程共享主存空间和资源</text>
+  <text x="460" y="424" class="note">TCB 保存每线程执行控制信息</text>
+  <text x="460" y="446" class="note">PCB 保存每进程资源信息</text>
+  <text x="460" y="468" class="note">线程可有自己的用户栈和可选系统栈</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-labelledby="title desc">
+  <title id="title">二级页表地址转换</title>
+  <desc id="desc">逻辑地址的目录号、页号、偏移量分别用于查页目录表、查二级页表和拼接物理地址。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+  <rect width="920" height="440" fill="#f8faf7"/>
+  <text x="46" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">把一张大表拆成目录加若干小表</text>
+
+  <text x="70" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">逻辑地址</text>
+  <rect x="70" y="98" width="130" height="44" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="92" y="126" font-family="Arial, sans-serif" font-size="14" fill="#223">目录号 dir</text>
+  <rect x="200" y="98" width="130" height="44" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="226" y="126" font-family="Arial, sans-serif" font-size="14" fill="#223">页号 page</text>
+  <rect x="330" y="98" width="150" height="44" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="352" y="126" font-family="Arial, sans-serif" font-size="14" fill="#223">页内 offset</text>
+  <text x="70" y="170" font-family="Arial, sans-serif" font-size="13" fill="#475569">逻辑地址字段包括目录号 dir、页号 page、页内 offset</text>
+
+  <text x="70" y="226" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">页目录表</text>
+  <rect x="70" y="236" width="170" height="26" fill="#dde8e2" stroke="#507c75"/>
+  <text x="82" y="254" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#223">目录项　页表地址</text>
+  <rect x="70" y="262" width="170" height="26" fill="#fff4df" stroke="#a17228"/>
+  <text x="82" y="280" font-family="Arial, sans-serif" font-size="12" fill="#223">dir　　→ 某二级页表</text>
+
+  <line x1="135" y1="142" x2="135" y2="236" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="240" y1="275" x2="360" y2="275" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="360" y="226" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">进程的二级页表</text>
+  <rect x="360" y="236" width="180" height="26" fill="#dde8e2" stroke="#507c75"/>
+  <text x="372" y="254" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#223">页号　　页框号</text>
+  <rect x="360" y="262" width="180" height="26" fill="#fff4df" stroke="#a17228"/>
+  <text x="372" y="280" font-family="Arial, sans-serif" font-size="12" fill="#223">page　　f</text>
+  <text x="360" y="316" font-family="Arial, sans-serif" font-size="13" fill="#475569">二级页表项给出物理页框号</text>
+
+  <line x1="265" y1="142" x2="265" y2="206" stroke="#8a9a8e" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="265" y1="206" x2="430" y2="236" stroke="#8a9a8e" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="282" y="200" font-family="Arial, sans-serif" font-size="12" fill="#475569">page 在选中的页表内索引</text>
+
+  <line x1="540" y1="275" x2="640" y2="275" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="640" y="226" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">物理地址</text>
+  <rect x="640" y="236" width="110" height="44" fill="#eef0ff" stroke="#5f6799"/>
+  <text x="660" y="264" font-family="Arial, sans-serif" font-size="14" fill="#223">页框号 f</text>
+  <rect x="750" y="236" width="110" height="44" fill="#eef0ff" stroke="#5f6799"/>
+  <text x="772" y="264" font-family="Arial, sans-serif" font-size="14" fill="#223">offset</text>
+  <text x="640" y="312" font-family="Arial, sans-serif" font-size="13" fill="#475569">物理地址由页框号与 offset 拼接</text>
+
+  <line x1="405" y1="142" x2="805" y2="180" stroke="#8a9a8e" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="805" y1="180" x2="805" y2="236" stroke="#8a9a8e" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+  <text x="70" y="368" font-family="Arial, sans-serif" font-size="14" fill="#475569">访问路径先查页目录表，再查进程二级页表；访问一个数据可能需要页目录、页表和数据三次主存访问。</text>
+  <text x="70" y="396" font-family="Arial, sans-serif" font-size="14" fill="#475569">没有用到的地址区间可以不建对应的二级页表，这正是多级页表节省内存的原因。</text>
+</svg>

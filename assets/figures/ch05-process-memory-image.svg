@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560" role="img" aria-labelledby="title desc">
+  <title id="title">进程的内存映像</title>
+  <desc id="desc">进程映像分为三块：PCB 与核心堆栈构成内核执行环境，代码段、数据段、用户堆栈构成用户私有地址空间，另有一块共享地址空间可被多个进程访问。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .kern { fill: #fff1d6; stroke: #b8791f; stroke-width: 1.8; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.8; }
+      .shared { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 1.8; }
+      .zone { fill: none; stroke: #9aa3aa; stroke-width: 1.4; stroke-dasharray: 6 4; }
+      .seg { font-size: 15px; font-weight: 700; }
+      .band { font-size: 14px; font-weight: 700; fill: #2f4858; }
+      .sub { font-size: 12px; fill: #3d4b52; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.5; fill: none; }
+    </style>
+    <marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="760" height="560" class="frame"/>
+  <text x="36" y="38" class="seg" font-size="21">图 5-4：进程的内存映像</text>
+
+  <!-- kernel execution environment -->
+  <rect x="60" y="64" width="420" height="120" rx="8" class="zone"/>
+  <text x="76" y="86" class="band">内核执行环境</text>
+  <rect x="80" y="98" width="180" height="68" rx="6" class="kern"/>
+  <text x="170" y="128" text-anchor="middle" class="seg">PCB</text>
+  <text x="170" y="150" text-anchor="middle" class="sub">进程控制信息</text>
+  <rect x="290" y="98" width="170" height="68" rx="6" class="kern"/>
+  <text x="375" y="128" text-anchor="middle" class="seg">核心堆栈</text>
+  <text x="375" y="150" text-anchor="middle" class="sub">内核态运行时使用</text>
+
+  <!-- user private address space -->
+  <rect x="60" y="206" width="420" height="200" rx="8" class="zone"/>
+  <text x="76" y="228" class="band">用户私有地址空间</text>
+  <rect x="80" y="240" width="380" height="44" rx="6" class="user"/>
+  <text x="270" y="268" text-anchor="middle" class="seg">代码段</text>
+  <rect x="80" y="294" width="380" height="44" rx="6" class="user"/>
+  <text x="270" y="322" text-anchor="middle" class="seg">数据段</text>
+  <rect x="80" y="348" width="380" height="44" rx="6" class="user"/>
+  <text x="270" y="376" text-anchor="middle" class="seg">用户堆栈</text>
+
+  <!-- shared address space -->
+  <rect x="520" y="206" width="200" height="200" rx="8" class="shared"/>
+  <text x="620" y="296" text-anchor="middle" class="seg">共享地址空间</text>
+  <text x="620" y="322" text-anchor="middle" class="sub">可被多个进程映射</text>
+  <line x1="460" y1="306" x2="518" y2="306" class="arrow" marker-end="url(#a4)"/>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="452" class="note">PCB 描述进程控制信息</text>
+  <text x="36" y="474" class="note">核心堆栈属于内核执行环境</text>
+  <text x="36" y="496" class="note">代码段/数据段/用户堆栈属于用户私有地址空间</text>
+  <text x="36" y="518" class="note">共享地址空间可被多个进程访问</text>
+</svg>

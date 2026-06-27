@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="270" viewBox="0 0 1000 270" role="img" aria-labelledby="title desc">
+  <title id="title">信号的检测与处理流程</title>
+  <desc id="desc">从信号触发到 do_signal、用户态信号处理程序，再经 sigreturn 回到断点。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .kernel { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 8; }
+      .seq { font-size: 13px; font-weight: 700; fill: #b8791f; }
+      .label { font-size: 14px; font-weight: 700; }
+      .small { font-size: 12px; }
+      .arrow { stroke: #2f4858; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="20" y="84" width="226" height="100" class="kernel"/>
+  <text x="133" y="112" text-anchor="middle" class="seq">① 触发</text>
+  <text x="133" y="138" text-anchor="middle" class="label">信号被置位</text>
+  <text x="133" y="162" text-anchor="middle" class="small">信号可能由发送信号或中断/异常服务触发</text>
+
+  <rect x="278" y="84" width="220" height="100" class="kernel"/>
+  <text x="388" y="112" text-anchor="middle" class="seq">② 返回前检查</text>
+  <text x="388" y="138" text-anchor="middle" class="label">do_signal</text>
+  <text x="388" y="162" text-anchor="middle" class="small">返回用户态之前调用 do_signal</text>
+
+  <rect x="530" y="84" width="220" height="100" class="user"/>
+  <text x="640" y="112" text-anchor="middle" class="seq">③ 用户态</text>
+  <text x="640" y="138" text-anchor="middle" class="label">信号处理程序</text>
+  <text x="640" y="162" text-anchor="middle" class="small">执行用户空间信号处理程序</text>
+
+  <rect x="782" y="84" width="218" height="100" class="user"/>
+  <text x="891" y="112" text-anchor="middle" class="seq">④ 恢复</text>
+  <text x="891" y="138" text-anchor="middle" class="label">sigreturn</text>
+  <text x="891" y="162" text-anchor="middle" class="small">sigreturn 后回到断点继续执行</text>
+
+  <path d="M246 134 H278" class="arrow"/>
+  <path d="M498 134 H530" class="arrow"/>
+  <path d="M750 134 H782" class="arrow"/>
+
+  <text x="500" y="232" text-anchor="middle" class="small">信号像一种“软件中断”：内核在返回用户态的路口检查并投递，处理完再由 sigreturn 收尾。</text>
+</svg>

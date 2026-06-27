@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="440" viewBox="0 0 820 440" role="img" aria-labelledby="title desc">
+  <title id="title">分时系统的工作方式</title>
+  <desc id="desc">多个用户终端联机接入系统，时钟中断把处理器时间划分为时间片，各终端以时间片方式轮流分享 CPU。</desc>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .term { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.6; }
+      .sys { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .clock { fill: #edf8f3; stroke: #2f7d63; stroke-width: 1.8; }
+      .slice { stroke: #2f4858; stroke-width: 1.2; }
+      .s1 { fill: #dbe9ff; }
+      .s2 { fill: #ffe6cc; }
+      .s3 { fill: #e3f3ea; }
+      .title { font-size: 22px; font-weight: 700; }
+      .label { font-size: 16px; font-weight: 700; }
+      .small { font-size: 13px; }
+      .blk { font-size: 13px; font-weight: 700; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#ar); }
+      .note { font-size: 13px; fill: #3d4b52; }
+    </style>
+  </defs>
+  <rect width="820" height="440" class="frame"/>
+  <text x="40" y="38" class="title">分时系统的工作方式</text>
+
+  <!-- terminals -->
+  <rect x="40" y="78" width="150" height="46" class="term"/>
+  <text x="115" y="106" text-anchor="middle" class="label">用户终端 1</text>
+  <rect x="40" y="138" width="150" height="46" class="term"/>
+  <text x="115" y="166" text-anchor="middle" class="label">用户终端 2</text>
+  <rect x="40" y="198" width="150" height="46" class="term"/>
+  <text x="115" y="226" text-anchor="middle" class="label">用户终端 n</text>
+  <text x="115" y="270" text-anchor="middle" class="small">多个用户终端联机接入系统</text>
+
+  <!-- arrows to system -->
+  <path d="M190 101 H300" class="arrow"/>
+  <path d="M190 161 H300" class="arrow"/>
+  <path d="M190 221 H300" class="arrow"/>
+
+  <!-- system / CPU -->
+  <rect x="300" y="120" width="170" height="86" class="sys"/>
+  <text x="385" y="156" text-anchor="middle" class="label">分时系统</text>
+  <text x="385" y="182" text-anchor="middle" class="small">统一管理一台 CPU</text>
+
+  <!-- clock interrupt -->
+  <rect x="300" y="240" width="170" height="60" class="clock"/>
+  <text x="385" y="266" text-anchor="middle" class="label">时钟中断</text>
+  <text x="385" y="288" text-anchor="middle" class="small">周期性触发，划分时间片</text>
+  <path d="M385 240 V206" class="arrow"/>
+
+  <!-- CPU time line with slices -->
+  <path d="M470 163 H520" class="arrow"/>
+  <text x="600" y="104" text-anchor="middle" class="label">处理器时间</text>
+  <rect x="520" y="120" width="60" height="40" class="slice s1"/>
+  <text x="550" y="145" text-anchor="middle" class="blk">T1</text>
+  <rect x="580" y="120" width="60" height="40" class="slice s2"/>
+  <text x="610" y="145" text-anchor="middle" class="blk">T2</text>
+  <rect x="640" y="120" width="60" height="40" class="slice s3"/>
+  <text x="670" y="145" text-anchor="middle" class="blk">Tn</text>
+  <rect x="700" y="120" width="60" height="40" class="slice s1"/>
+  <text x="730" y="145" text-anchor="middle" class="blk">T1</text>
+  <text x="640" y="186" text-anchor="middle" class="small">一个时间片轮一个终端</text>
+
+  <text x="40" y="346" class="note">时钟中断划分时间片：每到一个时间片结束，系统就收回 CPU 并切换到下一个终端。</text>
+  <text x="40" y="370" class="note">各终端以时间片方式分享 CPU，轮转足够快时，每个用户都感觉自己独占一台机器。</text>
+</svg>

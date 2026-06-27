@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
+  <title id="title">请求段页式虚拟存储的地址转换</title>
+  <desc id="desc">逻辑地址先按段号查段表，再按页号查页表，最后由页框号和位移形成物理地址。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#263238"/>
+    </marker>
+    <style>
+      .box { fill: #f8fbfc; stroke: #263238; stroke-width: 2; rx: 8; }
+      .seg { fill: #edf7f6; stroke: #28756f; stroke-width: 2; rx: 8; }
+      .page { fill: #eef2ff; stroke: #384b9b; stroke-width: 2; rx: 8; }
+      .out { fill: #fff4e6; stroke: #9a5b00; stroke-width: 2; rx: 8; }
+      .line { stroke: #263238; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif; fill: #182024; font-size: 20px; }
+      .small { font-size: 17px; }
+      .tiny { font-size: 15px; }
+      .label { font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect x="26" y="24" width="1068" height="472" fill="#ffffff" stroke="#d7dee2" stroke-width="2" rx="10"/>
+
+  <rect class="box" x="58" y="88" width="222" height="110"/>
+  <text class="label" x="169" y="124" text-anchor="middle">逻辑地址</text>
+  <text class="small" x="169" y="154" text-anchor="middle">逻辑地址字段为 s、p、d</text>
+  <text class="tiny" x="109" y="184" text-anchor="middle">s 段号</text>
+  <text class="tiny" x="169" y="184" text-anchor="middle">p 页号</text>
+  <text class="tiny" x="229" y="184" text-anchor="middle">d 位移</text>
+
+  <rect class="seg" x="358" y="72" width="246" height="142"/>
+  <text class="label" x="481" y="108" text-anchor="middle">段表</text>
+  <text class="small" x="481" y="140" text-anchor="middle">用 s 选择段表项</text>
+  <text class="small" x="481" y="169" text-anchor="middle">段表项给出页表初始地址和页表长度</text>
+  <text class="tiny" x="481" y="196" text-anchor="middle">同时检查 p 是否越过该段页表长度</text>
+
+  <rect class="page" x="690" y="72" width="224" height="142"/>
+  <text class="label" x="802" y="108" text-anchor="middle">该段的页表</text>
+  <text class="small" x="802" y="140" text-anchor="middle">用 p 选择页表项</text>
+  <text class="small" x="802" y="169" text-anchor="middle">页表项给出页框号</text>
+  <text class="tiny" x="802" y="196" text-anchor="middle">请求式管理还可带驻留位和辅存地址</text>
+
+  <rect class="out" x="812" y="330" width="228" height="96"/>
+  <text class="label" x="926" y="366" text-anchor="middle">物理地址</text>
+  <text class="small" x="926" y="397" text-anchor="middle">物理地址由页框号和位移 d 组成</text>
+
+  <rect class="box" x="356" y="330" width="270" height="96"/>
+  <text class="label" x="491" y="366" text-anchor="middle">两级语义</text>
+  <text class="small" x="491" y="397" text-anchor="middle">分段表达模块边界，分页负责离散装入</text>
+
+  <path class="line" d="M280 143 H358"/>
+  <path class="line" d="M604 143 H690"/>
+  <path class="line" d="M802 214 C816 260, 852 302, 900 330"/>
+  <path class="line" d="M226 198 C294 286, 366 332, 438 352"/>
+  <path class="line" d="M626 378 H812"/>
+
+  <text class="tiny" x="314" y="127">查段表</text>
+  <text class="tiny" x="646" y="127">定位页表</text>
+  <text class="tiny" x="702" y="364">拼接页框号和 d</text>
+</svg>

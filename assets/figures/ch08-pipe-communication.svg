@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">管道通信：写进程经共享文件连接读进程</title>
+  <desc id="desc">P1 写进程把字节流写入作为管道的共享文件，P2 读进程按先进先出的次序读出字节流。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="920" height="280" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="480" y="54" text-anchor="middle" font-size="22" font-family="sans-serif" fill="#0f172a">管道通信机制</text>
+
+  <rect x="60" y="110" width="170" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="145" y="148" text-anchor="middle" font-size="16" font-family="sans-serif" fill="#1e3a8a">P1 写进程</text>
+
+  <line x1="230" y1="142" x2="330" y2="142" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="280" y="128" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#2563eb">字节流</text>
+
+  <rect x="334" y="104" width="290" height="76" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="479" y="130" text-anchor="middle" font-size="15" font-family="sans-serif" fill="#854d0e">共享文件（管道 pipe）</text>
+  <rect x="354" y="140" width="50" height="28" fill="#ffffff" stroke="#ca8a04" stroke-width="1.4"/>
+  <rect x="404" y="140" width="50" height="28" fill="#ffffff" stroke="#ca8a04" stroke-width="1.4"/>
+  <rect x="454" y="140" width="50" height="28" fill="#fde68a" stroke="#ca8a04" stroke-width="1.4"/>
+  <rect x="504" y="140" width="50" height="28" fill="#fde68a" stroke="#ca8a04" stroke-width="1.4"/>
+  <rect x="554" y="140" width="50" height="28" fill="#fde68a" stroke="#ca8a04" stroke-width="1.4"/>
+  <text x="479" y="160" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#854d0e">FIFO</text>
+
+  <line x1="628" y1="142" x2="728" y2="142" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="678" y="128" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#2563eb">字节流</text>
+
+  <rect x="732" y="110" width="170" height="64" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="817" y="148" text-anchor="middle" font-size="16" font-family="sans-serif" fill="#166534">P2 读进程</text>
+
+  <text x="60" y="232" font-size="14" font-family="sans-serif" fill="#475569">① 读写进程通过共享文件连接：写进程从一端写入，读进程从另一端读出</text>
+  <text x="60" y="258" font-size="14" font-family="sans-serif" fill="#854d0e">② 管道按 FIFO 传送字节流，先写入的字节先被读出</text>
+  <text x="60" y="284" font-size="14" font-family="sans-serif" fill="#166534">③ 写满则写者等、读空则读者等——管道也可形成同步关系</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">接口分层与库函数到系统调用的调用链</title>
+  <desc id="desc">展示用户接口、库函数接口、系统调用接口以及 fprintf 到 sys_write 的路径。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .layer { stroke: #2f4858; stroke-width: 2; rx: 8; }
+      .user { fill: #eef6ff; }
+      .lib { fill: #edf8f3; }
+      .boundary { fill: #fff8e8; }
+      .kernel { fill: #ffece6; }
+      .hw { fill: #eceff1; }
+      .label { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .arrow { stroke: #2f4858; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .cut { stroke: #bf6f33; stroke-width: 2; stroke-dasharray: 8 6; }
+    </style>
+  </defs>
+  <rect x="60" y="34" width="360" height="70" class="layer user"/>
+  <text x="240" y="62" text-anchor="middle" class="label">用户接口位于系统程序一侧</text>
+  <text x="240" y="86" text-anchor="middle" class="small">Shell、命令方式、批处理、图形界面</text>
+
+  <rect x="60" y="126" width="360" height="70" class="layer lib"/>
+  <text x="240" y="154" text-anchor="middle" class="label">库函数接口</text>
+  <text x="240" y="178" text-anchor="middle" class="small">库函数接口连接应用代码与系统调用封装</text>
+
+  <rect x="60" y="218" width="360" height="70" class="layer boundary"/>
+  <text x="240" y="246" text-anchor="middle" class="label">系统调用接口跨越用户态与核心态</text>
+  <text x="240" y="270" text-anchor="middle" class="small">陷入、分派、返回</text>
+
+  <line x1="40" y1="306" x2="900" y2="306" class="cut"/>
+  <text x="760" y="296" class="small">用户态 / 核心态边界</text>
+
+  <rect x="60" y="326" width="360" height="70" class="layer kernel"/>
+  <text x="240" y="354" text-anchor="middle" class="label">操作系统内核服务</text>
+  <text x="240" y="378" text-anchor="middle" class="small">进程、文件、设备、内存等</text>
+
+  <rect x="60" y="418" width="360" height="54" class="layer hw"/>
+  <text x="240" y="452" text-anchor="middle" class="label">硬件</text>
+
+  <path d="M240 104 V126" class="arrow"/>
+  <path d="M240 196 V218" class="arrow"/>
+  <path d="M240 288 V326" class="arrow"/>
+  <path d="M240 396 V418" class="arrow"/>
+
+  <rect x="540" y="64" width="330" height="58" class="layer user"/>
+  <text x="705" y="98" text-anchor="middle" class="label">应用程序调用 fprintf()</text>
+  <rect x="540" y="154" width="330" height="58" class="layer lib"/>
+  <text x="705" y="179" text-anchor="middle" class="label">C 库中的 fprintf() 调用 write() 封装</text>
+  <text x="705" y="200" text-anchor="middle" class="small">缓冲、格式化、准备参数</text>
+  <rect x="540" y="244" width="330" height="58" class="layer boundary"/>
+  <text x="705" y="278" text-anchor="middle" class="label">系统调用处理程序进入核心态</text>
+  <rect x="540" y="344" width="330" height="58" class="layer kernel"/>
+  <text x="705" y="378" text-anchor="middle" class="label">内核函数 sys_write() 执行实际服务</text>
+
+  <path d="M705 122 V154" class="arrow"/>
+  <path d="M705 212 V244" class="arrow"/>
+  <path d="M705 302 V344" class="arrow"/>
+</svg>

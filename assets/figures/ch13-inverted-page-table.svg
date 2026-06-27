@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="450" viewBox="0 0 920 450" role="img" aria-labelledby="title desc">
+  <title id="title">反置页表的查找路径</title>
+  <desc id="desc">用进程标识和页号经哈希表缩小查找范围，在反置页表中找到匹配项后得到物理块号。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+  <rect width="920" height="450" fill="#f8faf7"/>
+  <text x="46" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">按页框组织页表，反向查找进程页</text>
+
+  <text x="70" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">逻辑地址</text>
+  <rect x="70" y="98" width="120" height="44" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="86" y="126" font-family="Arial, sans-serif" font-size="13" fill="#223">进程标识 pid</text>
+  <rect x="190" y="98" width="100" height="44" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="212" y="126" font-family="Arial, sans-serif" font-size="13" fill="#223">页号 p</text>
+  <rect x="290" y="98" width="100" height="44" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="312" y="126" font-family="Arial, sans-serif" font-size="13" fill="#223">位移 d</text>
+
+  <rect x="120" y="196" width="160" height="44" rx="8" fill="#fde8e4" stroke="#b06a52"/>
+  <text x="152" y="224" font-family="Arial, sans-serif" font-size="14" fill="#223">哈希函数</text>
+  <line x1="180" y1="142" x2="190" y2="196" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="60" y="186" font-family="Arial, sans-serif" font-size="12" fill="#475569">pid 和 p 一起参与散列</text>
+
+  <rect x="120" y="290" width="160" height="44" rx="8" fill="#fff4df" stroke="#a17228"/>
+  <text x="166" y="318" font-family="Arial, sans-serif" font-size="14" fill="#223">哈希表</text>
+  <line x1="200" y1="240" x2="200" y2="290" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="70" y="368" font-family="Arial, sans-serif" font-size="13" fill="#475569">哈希表用于缩小按进程号和页号查找范围</text>
+
+  <text x="420" y="200" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">反置页表（每个物理块一项）</text>
+  <rect x="420" y="212" width="300" height="26" fill="#dde8e2" stroke="#507c75"/>
+  <text x="432" y="230" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#223">进程标识　页号　特征位　链指针</text>
+  <rect x="420" y="238" width="300" height="26" fill="#ffffff" stroke="#507c75"/>
+  <text x="432" y="256" font-family="Arial, sans-serif" font-size="12" fill="#223">…　　　　…　　…　　　→ 下一候选项</text>
+  <rect x="420" y="264" width="300" height="26" fill="#fff4df" stroke="#a17228"/>
+  <text x="432" y="282" font-family="Arial, sans-serif" font-size="12" fill="#223">pid　　　 p　　 有效　　第 i 项命中</text>
+  <line x1="280" y1="312" x2="420" y2="276" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="420" y="318" font-family="Arial, sans-serif" font-size="13" fill="#475569">反置页表项包含进程标识、页号、特征位和链指针</text>
+  <text x="420" y="340" font-family="Arial, sans-serif" font-size="13" fill="#475569">命中项的序号 i 就是物理块号</text>
+
+  <text x="640" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">物理地址</text>
+  <rect x="640" y="98" width="110" height="44" fill="#eef0ff" stroke="#5f6799"/>
+  <text x="662" y="126" font-family="Arial, sans-serif" font-size="14" fill="#223">块号 i</text>
+  <rect x="750" y="98" width="110" height="44" fill="#eef0ff" stroke="#5f6799"/>
+  <text x="772" y="126" font-family="Arial, sans-serif" font-size="14" fill="#223">位移 d</text>
+  <line x1="700" y1="212" x2="700" y2="142" stroke="#2f4f4f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="390" y1="120" x2="750" y2="120" stroke="#8a9a8e" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="430" y="110" font-family="Arial, sans-serif" font-size="12" fill="#475569">位移 d 原样拼接</text>
+
+  <text x="70" y="412" font-family="Arial, sans-serif" font-size="14" fill="#475569">反置页表只保存已调入内存的页面信息；查得物理块号后与位移组成物理地址。</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">分页系统中的代码共享</title>
+  <desc id="desc">两个进程的页表把共享代码页映射到同一页框，同时各自保留私有数据页。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f4f4f"/>
+    </marker>
+  </defs>
+  <rect width="920" height="430" fill="#f8faf7"/>
+  <text x="46" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">共享的是页框，独立的是数据</text>
+
+  <text x="70" y="92" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">进程 A 的页表</text>
+  <rect x="70" y="104" width="200" height="26" fill="#dde8e2" stroke="#507c75"/>
+  <text x="82" y="122" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#223">页号　　页框号</text>
+  <rect x="70" y="130" width="200" height="26" fill="#fff4df" stroke="#a17228"/>
+  <text x="82" y="148" font-family="Arial, sans-serif" font-size="12" fill="#223">0（代码）　　3</text>
+  <rect x="70" y="156" width="200" height="26" fill="#ffffff" stroke="#507c75"/>
+  <text x="82" y="174" font-family="Arial, sans-serif" font-size="12" fill="#223">1（数据）　　5</text>
+
+  <text x="70" y="262" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">进程 B 的页表</text>
+  <rect x="70" y="274" width="200" height="26" fill="#dde8e2" stroke="#507c75"/>
+  <text x="82" y="292" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#223">页号　　页框号</text>
+  <rect x="70" y="300" width="200" height="26" fill="#fff4df" stroke="#a17228"/>
+  <text x="82" y="318" font-family="Arial, sans-serif" font-size="12" fill="#223">0（代码）　　3</text>
+  <rect x="70" y="326" width="200" height="26" fill="#ffffff" stroke="#507c75"/>
+  <text x="82" y="344" font-family="Arial, sans-serif" font-size="12" fill="#223">1（数据）　　8</text>
+
+  <text x="470" y="92" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#38505a">物理主存</text>
+  <rect x="470" y="104" width="220" height="40" fill="#fde8e4" stroke="#b06a52"/>
+  <text x="486" y="130" font-family="Arial, sans-serif" font-size="13" fill="#223">页框 3：共享代码页</text>
+  <rect x="470" y="160" width="220" height="40" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="486" y="186" font-family="Arial, sans-serif" font-size="13" fill="#223">页框 5：A 的私有数据页</text>
+  <rect x="470" y="216" width="220" height="40" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="486" y="242" font-family="Arial, sans-serif" font-size="13" fill="#223">页框 8：B 的私有数据页</text>
+
+  <line x1="270" y1="143" x2="470" y2="124" stroke="#b06a52" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="270" y1="313" x2="470" y2="136" stroke="#b06a52" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="270" y1="169" x2="470" y2="180" stroke="#507c75" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="270" y1="339" x2="470" y2="236" stroke="#507c75" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="470" y="296" font-family="Arial, sans-serif" font-size="13" fill="#475569">共享代码页需要不同进程页表映射到同一页框，</text>
+  <text x="470" y="318" font-family="Arial, sans-serif" font-size="13" fill="#475569">而每个进程仍保留自己的私有数据页。</text>
+
+  <text x="70" y="396" font-family="Arial, sans-serif" font-size="14" fill="#475569">共享页中的地址引用要求统一页号：代码内部的转移地址按页号生成，两个进程必须用同一页号映射它。</text>
+</svg>

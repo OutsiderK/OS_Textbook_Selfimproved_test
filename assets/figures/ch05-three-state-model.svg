@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" viewBox="0 0 720 500" role="img" aria-labelledby="title desc">
+  <title id="title">进程的三态模型</title>
+  <desc id="desc">进程在运行态、就绪态和等待态之间转换：就绪态被选中进入运行态，运行态落选回到就绪态，运行态因等待事件进入等待态，等待事件结束后回到就绪态。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .run { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .ready { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .wait { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 2; }
+      .state { font-size: 18px; font-weight: 700; }
+      .edge { font-size: 13px; fill: #2f4858; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.7; fill: none; }
+    </style>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="720" height="500" class="frame"/>
+  <text x="36" y="40" class="state" font-size="21">图 5-1：进程的三态模型</text>
+
+  <!-- states -->
+  <rect x="280" y="74" width="160" height="60" rx="8" class="run"/>
+  <text x="360" y="111" text-anchor="middle" class="state">运行态</text>
+
+  <rect x="80" y="276" width="160" height="60" rx="8" class="ready"/>
+  <text x="160" y="313" text-anchor="middle" class="state">就绪态</text>
+
+  <rect x="480" y="276" width="160" height="60" rx="8" class="wait"/>
+  <text x="560" y="313" text-anchor="middle" class="state">等待态</text>
+
+  <!-- ready -> run (selected) -->
+  <line x1="196" y1="276" x2="300" y2="136" class="arrow" marker-end="url(#a1)"/>
+  <text x="206" y="206" class="edge">选中（被调度）</text>
+
+  <!-- run -> ready (preempted) -->
+  <line x1="300" y1="118" x2="200" y2="276" class="arrow" marker-end="url(#a1)"/>
+  <text x="92" y="208" class="edge">落选（时间片到）</text>
+
+  <!-- run -> wait (event request) -->
+  <line x1="420" y1="118" x2="520" y2="276" class="arrow" marker-end="url(#a1)"/>
+  <text x="470" y="200" class="edge">请求事件 / I/O</text>
+
+  <!-- wait -> ready (event done) -->
+  <line x1="480" y1="318" x2="240" y2="318" class="arrow" marker-end="url(#a1)"/>
+  <text x="300" y="340" class="edge">事件出现</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="406" class="note">就绪态被选中进入运行态</text>
+  <text x="36" y="428" class="note">运行态落选回到就绪态</text>
+  <text x="36" y="450" class="note">运行态等待事件进入等待态</text>
+  <text x="36" y="472" class="note">等待事件结束回到就绪态</text>
+</svg>

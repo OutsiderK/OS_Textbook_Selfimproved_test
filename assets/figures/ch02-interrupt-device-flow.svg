@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="250" viewBox="0 0 1000 250" role="img" aria-labelledby="title desc">
+  <title id="title">中断装置的工作过程</title>
+  <desc id="desc">中断装置从捕获中断源到按中断向量转向处理入口的有序步骤。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .step { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .seq { font-size: 13px; font-weight: 700; fill: #b8791f; }
+      .label { font-size: 15px; font-weight: 700; }
+      .small { font-size: 12px; }
+      .arrow { stroke: #2f4858; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="24" y="78" width="210" height="94" class="step"/>
+  <text x="129" y="104" text-anchor="middle" class="seq">① 硬件捕获</text>
+  <text x="129" y="130" text-anchor="middle" class="label">中断源进入中断装置</text>
+
+  <rect x="266" y="78" width="220" height="94" class="step"/>
+  <text x="376" y="104" text-anchor="middle" class="seq">② 记录</text>
+  <text x="376" y="130" text-anchor="middle" class="label">中断控制部件写中断寄存器</text>
+
+  <rect x="518" y="78" width="210" height="94" class="step"/>
+  <text x="623" y="104" text-anchor="middle" class="seq">③ 保存现场</text>
+  <text x="623" y="130" text-anchor="middle" class="label">现行 PSW 保存到内存</text>
+
+  <rect x="760" y="78" width="216" height="94" class="step"/>
+  <text x="868" y="104" text-anchor="middle" class="seq">④ 定位入口</text>
+  <text x="868" y="130" text-anchor="middle" class="label">按中断向量找到处理入口</text>
+
+  <path d="M234 125 H266" class="arrow"/>
+  <path d="M486 125 H518" class="arrow"/>
+  <path d="M728 125 H760" class="arrow"/>
+
+  <text x="500" y="210" text-anchor="middle" class="small">中断装置（硬件）在一条指令结束后接管：先捕获并记录，再保存现行 PSW，最后交给软件侧的中断向量。</text>
+</svg>

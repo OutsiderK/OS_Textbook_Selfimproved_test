@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="500" viewBox="0 0 1040 500" role="img" aria-labelledby="title desc">
+  <title id="title">FAT12 磁盘布局与簇链访问</title>
+  <desc id="desc">FAT12 包含 boot sector、FAT、root directory 和 data area，目录项给出首簇，FAT 项记录后继簇。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .boot { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 5; }
+      .fat { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 5; }
+      .root { fill: #f6eefb; stroke: #7a5799; stroke-width: 2; rx: 5; }
+      .data { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 5; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="24" y="34" width="992" height="428" class="panel"/>
+  <text x="520" y="66" text-anchor="middle" class="head">FAT12：从目录项到 FAT 表再到数据区簇链</text>
+  <text x="520" y="94" text-anchor="middle" class="note">磁盘包含 boot sector、FAT、root directory 和 data area</text>
+
+  <rect x="70" y="122" width="160" height="76" class="boot"/>
+  <text x="150" y="154" text-anchor="middle" class="small">boot sector</text>
+  <text x="150" y="178" text-anchor="middle" class="note">引导区</text>
+
+  <rect x="260" y="122" width="200" height="76" class="fat"/>
+  <text x="360" y="150" text-anchor="middle" class="small">FAT</text>
+  <text x="360" y="175" text-anchor="middle" class="note">FAT 项记录簇链</text>
+
+  <rect x="490" y="122" width="210" height="76" class="root"/>
+  <text x="595" y="150" text-anchor="middle" class="small">root directory</text>
+  <text x="595" y="175" text-anchor="middle" class="note">目录项记录文件起始簇</text>
+
+  <rect x="730" y="122" width="230" height="76" class="data"/>
+  <text x="845" y="150" text-anchor="middle" class="small">data area</text>
+  <text x="845" y="175" text-anchor="middle" class="note">簇号指向数据区域</text>
+
+  <rect x="118" y="274" width="210" height="54" class="root"/>
+  <text x="223" y="296" text-anchor="middle" class="small">目录项给出文件名和首簇</text>
+  <text x="223" y="316" text-anchor="middle" class="note">A.TXT, first cluster = 4</text>
+
+  <rect x="412" y="250" width="220" height="102" class="fat"/>
+  <text x="522" y="276" text-anchor="middle" class="small">FAT 表项保存下一簇或结束标志</text>
+  <text x="522" y="301" text-anchor="middle" class="note">FAT[4] = 7</text>
+  <text x="522" y="323" text-anchor="middle" class="note">FAT[7] = 9</text>
+  <text x="522" y="345" text-anchor="middle" class="note">FAT[9] = EOF</text>
+
+  <rect x="716" y="242" width="90" height="48" class="data"/>
+  <text x="761" y="271" text-anchor="middle" class="small">簇 4</text>
+  <rect x="826" y="300" width="90" height="48" class="data"/>
+  <text x="871" y="329" text-anchor="middle" class="small">簇 7</text>
+  <rect x="716" y="358" width="90" height="48" class="data"/>
+  <text x="761" y="387" text-anchor="middle" class="small">簇 9</text>
+
+  <path d="M328 301 L 412 301" class="arrow"/>
+  <path d="M632 302 L 716 266" class="arrow"/>
+  <path d="M806 266 L 826 324" class="arrow"/>
+  <path d="M826 324 L 806 382" class="arrow"/>
+  <text x="815" y="438" text-anchor="middle" class="note">数据区簇按 FAT 链访问</text>
+</svg>

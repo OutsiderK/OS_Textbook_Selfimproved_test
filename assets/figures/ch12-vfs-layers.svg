@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" role="img" aria-labelledby="title desc">
+  <title id="title">VFS 层次与内部分派</title>
+  <desc id="desc">用户进程经 POSIX 接口进入 VFS，VFS 用 v-node 和函数指针分派到具体文件系统。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#34495e"/>
+    </marker>
+  </defs>
+  <rect width="900" height="470" fill="#fbfaf6"/>
+  <text x="44" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">VFS：统一接口，分派实现</text>
+  <rect x="70" y="72" width="210" height="56" rx="8" fill="#e8f0fe" stroke="#496c9f"/>
+  <text x="112" y="106" font-family="Arial, sans-serif" font-size="15" fill="#1f2933">用户进程</text>
+  <rect x="350" y="72" width="210" height="56" rx="8" fill="#e8f0fe" stroke="#496c9f"/>
+  <text x="394" y="106" font-family="Arial, sans-serif" font-size="15" fill="#1f2933">POSIX 接口</text>
+  <text x="340" y="146" font-family="Arial, sans-serif" font-size="13" fill="#475569">POSIX 接口位于用户进程和 VFS 之间</text>
+  <rect x="250" y="174" width="360" height="74" rx="8" fill="#e7f5ee" stroke="#4f806a"/>
+  <text x="370" y="204" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1f2933">Virtual file system</text>
+  <text x="302" y="230" font-family="Arial, sans-serif" font-size="14" fill="#1f2933">VFS 抽象多种具体文件系统</text>
+  <rect x="70" y="303" width="150" height="54" rx="8" fill="#fff1d6" stroke="#936f2c"/>
+  <text x="116" y="335" font-family="Arial, sans-serif" font-size="15" fill="#1f2933">FS1</text>
+  <rect x="270" y="303" width="150" height="54" rx="8" fill="#fff1d6" stroke="#936f2c"/>
+  <text x="316" y="335" font-family="Arial, sans-serif" font-size="15" fill="#1f2933">FS2</text>
+  <rect x="470" y="303" width="150" height="54" rx="8" fill="#fff1d6" stroke="#936f2c"/>
+  <text x="516" y="335" font-family="Arial, sans-serif" font-size="15" fill="#1f2933">FS3</text>
+  <rect x="690" y="303" width="150" height="54" rx="8" fill="#f1ecff" stroke="#6c5aa8"/>
+  <text x="722" y="335" font-family="Arial, sans-serif" font-size="15" fill="#1f2933">buffer cache</text>
+  <text x="632" y="386" font-family="Arial, sans-serif" font-size="13" fill="#475569">具体文件系统通过 buffer cache 访问存储</text>
+  <line x1="280" y1="100" x2="350" y2="100" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="455" y1="128" x2="455" y2="174" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="340" y1="248" x2="145" y2="303" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="410" y1="248" x2="345" y2="303" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="485" y1="248" x2="545" y2="303" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="620" y1="330" x2="690" y2="330" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="66" y="407" width="770" height="42" rx="8" fill="#ffffff" stroke="#cbd5d1"/>
+  <text x="88" y="433" font-family="Arial, sans-serif" font-size="14" fill="#1f2933">进程通过文件描述符表找到 file descriptions；v-node 抽象具体文件对象；函数指针把 VFS 操作分派到具体 FS 实现</text>
+</svg>

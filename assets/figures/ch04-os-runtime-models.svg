@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" role="img" aria-labelledby="title desc">
+  <title id="title">操作系统功能的两种运行模型</title>
+  <desc id="desc">左侧模型中操作系统功能作为内核函数在用户进程的上下文中执行，进程切换把不同用户进程的内核执行片段连接起来；右侧模型中操作系统功能作为独立的服务进程运行，微内核提供进程切换，用户进程与服务进程通过内核机制协作。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .panel { fill: #ffffff; stroke: #c7ccd1; stroke-width: 1.5; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.8; }
+      .kern { fill: #fff1d6; stroke: #b8791f; stroke-width: 1.8; }
+      .server { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 1.8; }
+      .title2 { font-size: 15px; font-weight: 700; fill: #2f4858; }
+      .label { font-size: 18px; font-weight: 700; }
+      .comp-label { font-size: 13px; font-weight: 700; }
+      .band { font-size: 12px; font-weight: 700; fill: #2f4858; }
+      .sub { font-size: 11px; fill: #3d4b52; }
+      .note { font-size: 12.5px; fill: #3d4b52; }
+      .divider { stroke: #9aa3aa; stroke-width: 1.2; stroke-dasharray: 5 4; }
+      .arrow { stroke: #6b7780; stroke-width: 1.5; fill: none; }
+    </style>
+    <marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="880" height="540" class="frame"/>
+  <text x="40" y="38" class="label" font-size="22">操作系统功能的两种运行模型</text>
+
+  <!-- left panel: in-process kernel (UNIX) -->
+  <rect x="34" y="58" width="402" height="372" class="panel"/>
+  <text x="50" y="84" class="title2">模型一：内核函数在进程内执行（UNIX 型）</text>
+  <text x="50" y="108" class="band">用户态</text>
+  <rect x="60" y="118" width="150" height="52" class="user"/>
+  <text x="135" y="149" text-anchor="middle" class="comp-label">用户进程 P1</text>
+  <rect x="252" y="118" width="150" height="52" class="user"/>
+  <text x="327" y="149" text-anchor="middle" class="comp-label">用户进程 P2</text>
+
+  <line x1="50" y1="190" x2="420" y2="190" class="divider"/>
+  <text x="50" y="208" class="band">核心态</text>
+  <rect x="60" y="216" width="150" height="56" class="kern"/>
+  <text x="135" y="240" text-anchor="middle" class="comp-label">内核函数</text>
+  <text x="135" y="259" text-anchor="middle" class="sub">代表 P1 执行</text>
+  <rect x="252" y="216" width="150" height="56" class="kern"/>
+  <text x="327" y="240" text-anchor="middle" class="comp-label">内核函数</text>
+  <text x="327" y="259" text-anchor="middle" class="sub">代表 P2 执行</text>
+
+  <line x1="135" y1="170" x2="135" y2="214" class="arrow" marker-end="url(#ar3)"/>
+  <line x1="327" y1="170" x2="327" y2="214" class="arrow" marker-end="url(#ar3)"/>
+  <line x1="210" y1="244" x2="250" y2="244" class="arrow" marker-end="url(#ar3)"/>
+  <text x="231" y="236" text-anchor="middle" class="sub">进程切换</text>
+
+  <text x="50" y="312" class="note">应用进程在用户态运行</text>
+  <text x="50" y="334" class="note">内核函数在核心态代表该进程执行服务</text>
+  <text x="50" y="356" class="note">进程切换连接不同用户进程的内核执行片段</text>
+
+  <!-- right panel: OS as separate processes (Windows/Minix) -->
+  <rect x="444" y="58" width="402" height="372" class="panel"/>
+  <text x="460" y="84" class="title2">模型二：OS 功能作为独立进程（Windows/Minix 型）</text>
+  <text x="460" y="108" class="band">用户态</text>
+  <rect x="470" y="118" width="150" height="52" class="user"/>
+  <text x="545" y="149" text-anchor="middle" class="comp-label">用户进程</text>
+  <rect x="662" y="118" width="160" height="52" class="server"/>
+  <text x="742" y="149" text-anchor="middle" class="comp-label">OS 服务进程</text>
+
+  <line x1="460" y1="190" x2="830" y2="190" class="divider"/>
+  <text x="460" y="208" class="band">核心态</text>
+  <rect x="470" y="216" width="352" height="56" class="kern"/>
+  <text x="646" y="240" text-anchor="middle" class="comp-label">微内核</text>
+  <text x="646" y="259" text-anchor="middle" class="sub">提供进程切换、消息传递等机制</text>
+
+  <line x1="545" y1="170" x2="545" y2="214" class="arrow" marker-end="url(#ar3)"/>
+  <line x1="742" y1="170" x2="742" y2="214" class="arrow" marker-end="url(#ar3)"/>
+  <line x1="545" y1="214" x2="545" y2="170" class="arrow" marker-end="url(#ar3)"/>
+  <line x1="742" y1="214" x2="742" y2="170" class="arrow" marker-end="url(#ar3)"/>
+
+  <text x="460" y="312" class="note">OS 函数可作为独立进程</text>
+  <text x="460" y="334" class="note">微内核提供进程切换函数</text>
+  <text x="460" y="356" class="note">用户进程和 OS 服务进程通过内核机制协作</text>
+
+  <text x="40" y="468" class="sub">两种模型的差别在于：操作系统的服务代码究竟“寄居”在调用它的进程上下文里，还是独立成另一个进程。</text>
+  <text x="40" y="492" class="sub">前者切换成本低、耦合紧；后者隔离性好，但依赖微内核在进程间传递请求。</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">资源分配图</title>
+  <desc id="desc">进程节点与资源节点构成二部图，申请边从进程指向资源，分配边从资源指向进程，图中环路用于判断死锁可能性。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.p{fill:#dbeafe;stroke:#2563eb;stroke-width:2}.r{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:10}.edge{stroke:#334155;stroke-width:2.3;marker-end:url(#arrow);fill:none}.cycle{stroke:#dc2626;stroke-width:3;marker-end:url(#arrow);fill:none}.t{font:16px sans-serif;fill:#111827}.small{font:14px sans-serif;fill:#475569}.label{font:18px sans-serif;font-weight:700;fill:#0f172a}.dot{fill:#059669}
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="520"/>
+  <text class="label" x="40" y="44">资源分配图：申请边与分配边</text>
+  <circle class="p" cx="190" cy="310" r="45"/><text class="label" x="172" y="317">P1</text>
+  <circle class="p" cx="460" cy="310" r="45"/><text class="label" x="442" y="317">P2</text>
+  <circle class="p" cx="730" cy="310" r="45"/><text class="label" x="712" y="317">P3</text>
+  <rect class="r" x="220" y="105" width="150" height="66"/><text class="label" x="278" y="145">R1</text><circle class="dot" cx="295" cy="158" r="4"/>
+  <rect class="r" x="350" y="400" width="150" height="66"/><text class="label" x="408" y="439">R2</text><circle class="dot" cx="415" cy="452" r="4"/><circle class="dot" cx="438" cy="452" r="4"/>
+  <rect class="r" x="595" y="105" width="150" height="66"/><text class="label" x="653" y="145">R3</text><circle class="dot" cx="670" cy="158" r="4"/>
+  <rect class="r" x="635" y="400" width="150" height="66"/><text class="label" x="693" y="439">R4</text><circle class="dot" cx="694" cy="452" r="4"/><circle class="dot" cx="710" cy="452" r="4"/><circle class="dot" cx="726" cy="452" r="4"/>
+  <path class="cycle" d="M215 274 L276 172"/>
+  <path class="cycle" d="M315 172 L430 278"/>
+  <path class="cycle" d="M422 347 L270 420"/>
+  <path class="cycle" d="M382 420 L225 338"/>
+  <path class="edge" d="M487 274 L631 170"/>
+  <path class="edge" d="M690 171 L722 266"/>
+  <text class="small" x="42" y="84">进程节点与资源节点构成二部图。</text>
+  <text class="small" x="42" y="108">申请边从进程指向资源；分配边从资源指向进程。</text>
+  <text class="small" x="42" y="132">图中环路用于判断死锁可能性。</text>
+  <text class="t" x="560" y="248">P2 还申请 R3</text>
+  <text class="t" x="724" y="248">R3 已分给 P3</text>
+</svg>

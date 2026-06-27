@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">PC 中断硬件结构</title>
+  <desc id="desc">CPU、系统总线、主从中断控制器与 IRQ 线路之间的连接关系。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .cpu { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 8; }
+      .ctrl { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .dev { fill: #edf8f3; stroke: #2f7d57; stroke-width: 2; rx: 8; }
+      .note { fill: #f6f8fa; stroke: #2f4858; stroke-width: 1.5; rx: 6; }
+      .label { font-size: 17px; font-weight: 700; }
+      .small { font-size: 13px; }
+      .arrow { stroke: #2f4858; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .bi { stroke: #29465b; stroke-width: 2.4; fill: none; marker-start: url(#arrow); marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="40" y="70" width="180" height="92" class="cpu"/>
+  <text x="130" y="110" text-anchor="middle" class="label">CPU</text>
+  <text x="130" y="136" text-anchor="middle" class="small">取指执行 / 响应中断</text>
+
+  <path d="M220 116 H360" class="bi"/>
+  <text x="290" y="106" text-anchor="middle" class="small">INT / INTA</text>
+
+  <rect x="360" y="70" width="230" height="92" class="ctrl"/>
+  <text x="475" y="110" text-anchor="middle" class="label">主中断控制器</text>
+  <text x="475" y="136" text-anchor="middle" class="small">IRQ0-IRQ7</text>
+
+  <rect x="360" y="262" width="230" height="92" class="ctrl"/>
+  <text x="475" y="302" text-anchor="middle" class="label">从中断控制器</text>
+  <text x="475" y="328" text-anchor="middle" class="small">扩展 IRQ8 以后线路</text>
+  <path d="M475 162 V262" class="arrow"/>
+  <text x="540" y="216" text-anchor="middle" class="small">级联</text>
+
+  <rect x="700" y="52" width="210" height="50" class="dev"/>
+  <text x="805" y="83" text-anchor="middle" class="small">时钟 IRQ0</text>
+  <rect x="700" y="116" width="210" height="50" class="dev"/>
+  <text x="805" y="147" text-anchor="middle" class="small">键盘 IRQ1 … IRQ7</text>
+  <path d="M700 77 H590" class="arrow"/>
+  <path d="M700 141 H590" class="arrow"/>
+
+  <rect x="700" y="288" width="210" height="50" class="dev"/>
+  <text x="805" y="319" text-anchor="middle" class="small">IRQ8、IRQ9 …</text>
+  <path d="M700 313 H590" class="arrow"/>
+
+  <rect x="40" y="392" width="870" height="56" class="note"/>
+  <text x="475" y="414" text-anchor="middle" class="small">CPU 通过 INT/INTA 与中断控制器交互；主中断控制器连接时钟、键盘等 IRQ0-IRQ7</text>
+  <text x="475" y="436" text-anchor="middle" class="small">从中断控制器扩展 IRQ8 以后线路</text>
+</svg>

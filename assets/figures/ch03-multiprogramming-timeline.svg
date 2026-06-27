@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img" aria-labelledby="title desc">
+  <title id="title">多道程序设计下的处理器与设备时间线</title>
+  <desc id="desc">处理器在 P1 与 P2 之间交替占用，I/O 处理器与磁带机、打印机和处理器并行工作，使计算与输入输出重叠。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .lane { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.3; }
+      .lane-label { font-size: 14px; font-weight: 700; fill: #2f4858; }
+      .p1 { fill: #dbe9ff; stroke: #3867a8; stroke-width: 1.4; }
+      .p2 { fill: #ffe6cc; stroke: #b8791f; stroke-width: 1.4; }
+      .io { fill: #e3f3ea; stroke: #2f7d63; stroke-width: 1.4; }
+      .blk { font-size: 13px; font-weight: 700; }
+      .title { font-size: 22px; font-weight: 700; }
+      .axis { stroke: #6b7780; stroke-width: 1.4; }
+      .note { font-size: 13px; fill: #3d4b52; }
+    </style>
+  </defs>
+  <rect width="860" height="430" class="frame"/>
+  <text x="40" y="38" class="title">多道程序设计下的处理器与设备时间线</text>
+
+  <!-- lanes -->
+  <text x="150" y="86" text-anchor="end" class="lane-label">处理器（CPU）</text>
+  <rect x="170" y="68" width="640" height="34" class="lane"/>
+  <text x="150" y="136" text-anchor="end" class="lane-label">I/O 处理器</text>
+  <rect x="170" y="118" width="640" height="34" class="lane"/>
+  <text x="150" y="186" text-anchor="end" class="lane-label">磁带机</text>
+  <rect x="170" y="168" width="640" height="34" class="lane"/>
+  <text x="150" y="236" text-anchor="end" class="lane-label">打印机</text>
+  <rect x="170" y="218" width="640" height="34" class="lane"/>
+
+  <!-- CPU alternating P1/P2 -->
+  <rect x="176" y="70" width="120" height="30" class="p1"/>
+  <text x="236" y="90" text-anchor="middle" class="blk">P1</text>
+  <rect x="300" y="70" width="120" height="30" class="p2"/>
+  <text x="360" y="90" text-anchor="middle" class="blk">P2</text>
+  <rect x="424" y="70" width="120" height="30" class="p1"/>
+  <text x="484" y="90" text-anchor="middle" class="blk">P1</text>
+  <rect x="548" y="70" width="120" height="30" class="p2"/>
+  <text x="608" y="90" text-anchor="middle" class="blk">P2</text>
+  <rect x="672" y="70" width="132" height="30" class="p1"/>
+  <text x="738" y="90" text-anchor="middle" class="blk">P1</text>
+
+  <!-- I/O processor activity overlapping -->
+  <rect x="300" y="120" width="120" height="30" class="io"/>
+  <text x="360" y="140" text-anchor="middle" class="blk">P1 的 I/O</text>
+  <rect x="548" y="120" width="120" height="30" class="io"/>
+  <text x="608" y="140" text-anchor="middle" class="blk">P2 的 I/O</text>
+
+  <!-- tape -->
+  <rect x="176" y="170" width="120" height="30" class="io"/>
+  <text x="236" y="190" text-anchor="middle" class="blk">读磁带</text>
+  <rect x="424" y="170" width="120" height="30" class="io"/>
+  <text x="484" y="190" text-anchor="middle" class="blk">读磁带</text>
+
+  <!-- printer -->
+  <rect x="424" y="220" width="120" height="30" class="io"/>
+  <text x="484" y="240" text-anchor="middle" class="blk">打印</text>
+  <rect x="672" y="220" width="120" height="30" class="io"/>
+  <text x="738" y="240" text-anchor="middle" class="blk">打印</text>
+
+  <!-- time axis -->
+  <line x1="170" y1="262" x2="810" y2="262" class="axis"/>
+  <text x="810" y="280" text-anchor="end" class="note">时间 →</text>
+
+  <text x="40" y="312" class="note">P1 与 P2 在处理器上交替占用：一道程序等待 I/O 时，处理器立即转去运行另一道。</text>
+  <text x="40" y="336" class="note">I/O 处理器承担输入输出工作，使 CPU 与 I/O 设备可重叠工作，而不是互相空等。</text>
+  <text x="40" y="360" class="note">磁带机与打印机可和处理器并行工作，多个部件在同一时间间隔内都在推进。</text>
+</svg>

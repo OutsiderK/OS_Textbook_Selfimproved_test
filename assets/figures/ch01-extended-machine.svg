@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
+  <title id="title">扩展机视角下的资源抽象</title>
+  <desc id="desc">操作系统把处理器、存储、设备分别抽象为进程、虚拟存储和文件。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .phys { fill: #f1ecff; stroke: #6c5aa8; stroke-width: 2; }
+      .abst { fill: #e7f5ee; stroke: #4f806a; stroke-width: 2; }
+      .label { font-size: 18px; font-weight: 700; }
+      .head  { font-size: 15px; font-weight: 700; fill: #2f4858; }
+      .map   { font-size: 13px; fill: #3d4b52; }
+      .note  { font-size: 13px; fill: #3d4b52; }
+      .arrow { stroke: #2f4858; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="720" height="380" fill="#fbfaf6"/>
+  <text x="40" y="40" class="label" font-size="22">扩展机视角下的资源抽象</text>
+
+  <text x="160" y="74" text-anchor="middle" class="head">物理资源</text>
+  <text x="550" y="74" text-anchor="middle" class="head">操作系统提供的抽象</text>
+
+  <rect x="70" y="100" width="180" height="56" class="phys"/>
+  <text x="160" y="134" text-anchor="middle" class="label">处理器</text>
+  <rect x="460" y="100" width="180" height="56" class="abst"/>
+  <text x="550" y="134" text-anchor="middle" class="label">进程</text>
+  <path d="M250 128 H458" class="arrow"/>
+  <text x="355" y="120" text-anchor="middle" class="map">抽象为</text>
+
+  <rect x="70" y="180" width="180" height="56" class="phys"/>
+  <text x="160" y="214" text-anchor="middle" class="label">存储</text>
+  <rect x="460" y="180" width="180" height="56" class="abst"/>
+  <text x="550" y="214" text-anchor="middle" class="label">虚拟存储</text>
+  <path d="M250 208 H458" class="arrow"/>
+  <text x="355" y="200" text-anchor="middle" class="map">抽象为</text>
+
+  <rect x="70" y="260" width="180" height="56" class="phys"/>
+  <text x="160" y="294" text-anchor="middle" class="label">设备</text>
+  <rect x="460" y="260" width="180" height="56" class="abst"/>
+  <text x="550" y="294" text-anchor="middle" class="label">文件</text>
+  <path d="M250 288 H458" class="arrow"/>
+  <text x="355" y="280" text-anchor="middle" class="map">抽象为</text>
+
+  <text x="40" y="352" class="note">扩展机视角强调操作系统向上隐藏硬件细节：处理器抽象为进程，存储抽象为虚拟存储，设备抽象为文件。</text>
+</svg>

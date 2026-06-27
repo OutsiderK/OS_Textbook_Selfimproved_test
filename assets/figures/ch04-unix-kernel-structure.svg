@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">UNIX 整体式内核结构</title>
+  <desc id="desc">用户程序经由系统调用接口进入内核，内核中的文件系统、进程控制、内存管理与设备驱动等子系统相互协作，最终操作底层硬件。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .iface { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 2; }
+      .kernel { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .comp { fill: #fff8e8; stroke: #b8791f; stroke-width: 1.4; }
+      .hw { fill: #eceff1; stroke: #6b7780; stroke-width: 2; }
+      .label { font-size: 18px; font-weight: 700; }
+      .comp-label { font-size: 15px; font-weight: 700; }
+      .band { font-size: 14px; font-weight: 700; fill: #2f4858; }
+      .sub { font-size: 12px; fill: #3d4b52; }
+      .note { font-size: 13px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.6; fill: none; }
+    </style>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="760" height="520" class="frame"/>
+  <text x="40" y="40" class="label" font-size="22">UNIX 整体式内核结构</text>
+
+  <!-- user band -->
+  <text x="56" y="74" class="band">用户态</text>
+  <rect x="120" y="62" width="520" height="56" class="user"/>
+  <text x="380" y="88" text-anchor="middle" class="comp-label">用户程序 / 库函数</text>
+  <text x="380" y="108" text-anchor="middle" class="sub">通过库封装发起请求</text>
+
+  <!-- syscall interface -->
+  <rect x="120" y="140" width="520" height="48" class="iface"/>
+  <text x="380" y="169" text-anchor="middle" class="comp-label">系统调用接口</text>
+  <line x1="380" y1="118" x2="380" y2="138" class="arrow" marker-end="url(#ar)"/>
+
+  <!-- kernel band -->
+  <text x="56" y="222" class="band">核心态</text>
+  <rect x="120" y="210" width="520" height="170" class="kernel"/>
+  <text x="380" y="234" text-anchor="middle" class="label" font-size="16">内核</text>
+  <rect x="140" y="248" width="230" height="56" class="comp"/>
+  <text x="255" y="281" text-anchor="middle" class="comp-label">文件系统</text>
+  <rect x="390" y="248" width="230" height="56" class="comp"/>
+  <text x="505" y="281" text-anchor="middle" class="comp-label">进程控制</text>
+  <rect x="140" y="314" width="230" height="56" class="comp"/>
+  <text x="255" y="347" text-anchor="middle" class="comp-label">内存管理</text>
+  <rect x="390" y="314" width="230" height="56" class="comp"/>
+  <text x="505" y="347" text-anchor="middle" class="comp-label">设备驱动</text>
+  <line x1="380" y1="188" x2="380" y2="208" class="arrow" marker-end="url(#ar)"/>
+
+  <!-- hardware -->
+  <rect x="120" y="402" width="520" height="48" class="hw"/>
+  <text x="380" y="431" text-anchor="middle" class="comp-label">硬件（处理器 / 内存 / 外设）</text>
+  <line x1="380" y1="380" x2="380" y2="400" class="arrow" marker-end="url(#ar)"/>
+
+  <!-- notes carrying the teaching points -->
+  <text x="40" y="478" class="note">系统调用接口连接用户程序与内核</text>
+  <text x="40" y="500" class="note">文件系统、进程控制、设备驱动等内核功能相互协作</text>
+</svg>

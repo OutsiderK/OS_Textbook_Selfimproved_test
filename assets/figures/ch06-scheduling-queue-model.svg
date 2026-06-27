@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="560" viewBox="0 0 860 560" role="img" aria-labelledby="title desc">
+  <title id="title">处理器调度的队列模型与三级调度</title>
+  <desc id="desc">高级调度把后备队列中的作业选入就绪队列，低级调度从就绪队列把处理器指派给某个进程；运行的进程时间片用完则超时返回就绪队列，等待事件则进入等待队列、事件出现后回到就绪队列；当内存紧张，中级调度在内存中的就绪/等待队列与外存的挂起就绪/挂起等待队列之间移动进程。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .ready { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.8; }
+      .cpu { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .wq { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 1.8; }
+      .back { fill: #f3eefb; stroke: #6f4aa0; stroke-width: 1.8; }
+      .susp { fill: #f7eee6; stroke: #b06a3a; stroke-width: 1.6; }
+      .store { fill: none; stroke: #c2b27a; stroke-width: 1.4; stroke-dasharray: 6 4; }
+      .lbl { font-size: 14px; font-weight: 700; }
+      .edge { font-size: 12.5px; fill: #2f4858; }
+      .sched { font-size: 12.5px; font-weight: 700; fill: #6f4aa0; }
+      .band { font-size: 12.5px; font-weight: 700; fill: #8a7430; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.7; fill: none; }
+    </style>
+    <marker id="aq" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="860" height="560" class="frame"/>
+  <text x="36" y="38" class="lbl" font-size="21">图 6-1：处理器调度的队列模型与三级调度</text>
+
+  <!-- memory band -->
+  <rect x="150" y="70" width="560" height="250" rx="10" class="store"/>
+  <text x="160" y="90" class="band">内存</text>
+
+  <!-- backing queue (external storage) -->
+  <rect x="24" y="150" width="110" height="48" rx="6" class="back"/>
+  <text x="79" y="179" text-anchor="middle" class="lbl">后备队列</text>
+  <text x="24" y="216" class="band">外存</text>
+
+  <!-- high-level scheduling: backing -> ready -->
+  <line x1="134" y1="160" x2="238" y2="140" class="arrow" marker-end="url(#aq)"/>
+  <text x="138" y="128" class="sched">高级调度</text>
+
+  <!-- ready queue -->
+  <rect x="240" y="120" width="300" height="46" rx="6" class="ready"/>
+  <rect x="250" y="128" width="52" height="30" fill="#ffffff" stroke="#8aa0c4"/>
+  <rect x="306" y="128" width="52" height="30" fill="#ffffff" stroke="#8aa0c4"/>
+  <rect x="362" y="128" width="52" height="30" fill="#ffffff" stroke="#8aa0c4"/>
+  <text x="488" y="148" text-anchor="middle" class="lbl">就绪队列</text>
+
+  <!-- low-level scheduling: ready -> CPU -->
+  <line x1="540" y1="143" x2="628" y2="143" class="arrow" marker-end="url(#aq)"/>
+  <text x="548" y="133" class="sched">低级调度 / 指派</text>
+  <rect x="628" y="116" width="150" height="54" rx="8" class="cpu"/>
+  <text x="703" y="149" text-anchor="middle" class="lbl">CPU（运行）</text>
+
+  <!-- timeout back to ready -->
+  <path d="M690,170 L690,210 L390,210 L390,168" class="arrow" marker-end="url(#aq)"/>
+  <text x="500" y="204" class="edge">超时</text>
+
+  <!-- to wait queue -->
+  <line x1="760" y1="170" x2="760" y2="252" class="arrow" marker-end="url(#aq)"/>
+  <text x="768" y="220" class="edge">等待事件</text>
+
+  <!-- wait queue -->
+  <rect x="430" y="256" width="330" height="44" rx="6" class="wq"/>
+  <rect x="440" y="264" width="50" height="28" fill="#ffffff" stroke="#79b394"/>
+  <rect x="494" y="264" width="50" height="28" fill="#ffffff" stroke="#79b394"/>
+  <text x="660" y="283" text-anchor="middle" class="lbl">等待队列</text>
+
+  <!-- event occurs back to ready -->
+  <path d="M430,278 L300,278 L300,168" class="arrow" marker-end="url(#aq)"/>
+  <text x="246" y="250" class="edge">事件出现</text>
+
+  <!-- suspended queues (external storage) -->
+  <rect x="240" y="360" width="300" height="46" rx="6" class="susp"/>
+  <text x="390" y="389" text-anchor="middle" class="lbl">挂起就绪 / 挂起等待队列</text>
+  <text x="240" y="424" class="band">外存</text>
+
+  <!-- intermediate scheduling: ready/wait <-> suspended -->
+  <line x1="330" y1="166" x2="330" y2="358" class="arrow" marker-end="url(#aq)"/>
+  <line x1="360" y1="358" x2="360" y2="302" class="arrow" marker-end="url(#aq)"/>
+  <text x="372" y="335" class="sched">中级调度（挂起 / 解除挂起）</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="468" class="note">高级调度从后备队列选择进入就绪队列</text>
+  <text x="36" y="490" class="note">低级调度从就绪队列指派 CPU</text>
+  <text x="36" y="512" class="note">中级调度在内存队列与挂起队列间移动进程</text>
+</svg>

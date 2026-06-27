@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="430" viewBox="0 0 940 430" role="img" aria-labelledby="title desc">
+  <title id="title">用户态与核心态的三类控制转移</title>
+  <desc id="desc">系统调用、中断和调度都可能让控制进入核心态。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .lane { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; }
+      .kernel { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 8; }
+      .event { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 8; }
+      .label { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .arrow { stroke: #24435a; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #607d8b; stroke-width: 2; stroke-dasharray: 7 6; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="40" y="48" width="860" height="142" class="lane"/>
+  <rect x="40" y="238" width="860" height="142" class="lane"/>
+  <text x="72" y="86" class="label">User mode</text>
+  <text x="72" y="276" class="label">Kernel mode</text>
+
+  <rect x="210" y="78" width="160" height="70" class="user"/>
+  <text x="290" y="108" text-anchor="middle" class="label">用户进程</text>
+  <text x="290" y="132" text-anchor="middle" class="small">普通指令流</text>
+
+  <rect x="210" y="278" width="160" height="70" class="kernel"/>
+  <text x="290" y="307" text-anchor="middle" class="label">系统调用服务</text>
+  <text x="290" y="331" text-anchor="middle" class="small">系统调用使用户进程进入内核执行服务</text>
+
+  <rect x="440" y="278" width="160" height="70" class="kernel"/>
+  <text x="520" y="307" text-anchor="middle" class="label">Scheduler</text>
+  <text x="520" y="331" text-anchor="middle" class="small">调度器可在内核态决定进程切换</text>
+
+  <rect x="670" y="278" width="160" height="70" class="kernel"/>
+  <text x="750" y="307" text-anchor="middle" class="label">Interrupt handler</text>
+  <text x="750" y="331" text-anchor="middle" class="small">中断处理程序可打断当前执行并进入内核</text>
+
+  <rect x="440" y="78" width="160" height="70" class="event"/>
+  <text x="520" y="107" text-anchor="middle" class="label">时间片到期</text>
+  <text x="520" y="131" text-anchor="middle" class="small">或阻塞、唤醒</text>
+
+  <rect x="670" y="78" width="160" height="70" class="event"/>
+  <text x="750" y="107" text-anchor="middle" class="label">外部事件</text>
+  <text x="750" y="131" text-anchor="middle" class="small">设备、时钟、中断</text>
+
+  <path d="M290 148 V278" class="arrow"/>
+  <text x="304" y="214" class="small">System call / trap</text>
+  <path d="M520 148 V278" class="dash"/>
+  <path d="M750 148 V278" class="dash"/>
+  <path d="M370 313 H440" class="arrow"/>
+  <path d="M600 313 H670" class="arrow"/>
+
+  <text x="210" y="405" class="small">核心结论：操作系统不是一直“占着 CPU”，而是在受控入口处重新获得控制权。</text>
+</svg>

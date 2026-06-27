@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="title desc">
+  <title id="title">共享存储区通信</title>
+  <desc id="desc">A、B 两个进程的虚地址空间各有一段映射到同一块共享存储区，内核负责建立映射，进程直接读写该区域交换数据。</desc>
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="920" height="400" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="480" y="54" text-anchor="middle" font-size="22" font-family="sans-serif" fill="#0f172a">共享存储区通信机制</text>
+
+  <!-- A 进程地址空间 -->
+  <rect x="70" y="90" width="200" height="200" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <text x="170" y="118" text-anchor="middle" font-size="15" font-family="sans-serif" fill="#1e3a8a">A 进程虚地址空间</text>
+  <rect x="90" y="136" width="160" height="36" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+  <rect x="90" y="180" width="160" height="44" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="170" y="207" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#5b21b6">映射段（读 / 写）</text>
+  <rect x="90" y="232" width="160" height="36" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+
+  <!-- B 进程地址空间 -->
+  <rect x="690" y="90" width="200" height="200" rx="12" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="790" y="118" text-anchor="middle" font-size="15" font-family="sans-serif" fill="#166534">B 进程虚地址空间</text>
+  <rect x="710" y="136" width="160" height="36" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+  <rect x="710" y="180" width="160" height="44" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="790" y="207" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#5b21b6">映射段（读 / 写）</text>
+  <rect x="710" y="232" width="160" height="36" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+
+  <!-- 共享存储区 -->
+  <rect x="380" y="150" width="200" height="100" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.4"/>
+  <text x="480" y="194" text-anchor="middle" font-size="16" font-family="sans-serif" fill="#5b21b6">共享存储区</text>
+  <text x="480" y="220" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#5b21b6">（按关键字申请的分区段）</text>
+
+  <line x1="250" y1="202" x2="376" y2="200" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrow2)"/>
+  <line x1="710" y1="202" x2="584" y2="200" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrow2)"/>
+  <text x="313" y="186" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#5b21b6">映射</text>
+  <text x="647" y="186" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#5b21b6">映射</text>
+
+  <!-- 内核 -->
+  <rect x="330" y="290" width="300" height="50" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8"/>
+  <text x="480" y="321" text-anchor="middle" font-size="15" font-family="sans-serif" fill="#334155">内核（负责建立映射）</text>
+  <line x1="480" y1="286" x2="480" y2="256" stroke="#64748b" stroke-width="1.8" stroke-dasharray="5 4"/>
+
+  <text x="60" y="372" font-size="14" font-family="sans-serif" fill="#5b21b6">① 共享存储区连接到多个进程虚地址空间，由内核建立映射</text>
+  <text x="60" y="398" font-size="14" font-family="sans-serif" fill="#475569">② 映射建立后进程可直接读写共享区交换数据；并发读写时需要额外同步机制避免竞争</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-labelledby="title desc">
+  <title id="title">存储层次</title>
+  <desc id="desc">从寄存器到可移动存储介质的存储层次，越靠上速度越快、成本越高，越靠下容量越大。</desc>
+  <rect width="920" height="440" fill="#f8faf7"/>
+  <text x="46" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">速度、成本与容量的分层</text>
+
+  <line x1="170" y1="100" x2="170" y2="380" stroke="#8a9a8e" stroke-width="2"/>
+  <path d="M 170 100 L 164 112 L 176 112 Z" fill="#8a9a8e"/>
+  <text x="60" y="200" font-family="Arial, sans-serif" font-size="14" fill="#475569">访问速度更快</text>
+  <text x="60" y="222" font-family="Arial, sans-serif" font-size="14" fill="#475569">单位成本更高</text>
+
+  <line x1="760" y1="100" x2="760" y2="380" stroke="#8a9a8e" stroke-width="2"/>
+  <path d="M 760 380 L 754 368 L 766 368 Z" fill="#8a9a8e"/>
+  <text x="780" y="240" font-family="Arial, sans-serif" font-size="14" fill="#475569">容量更大</text>
+
+  <rect x="310" y="78" width="300" height="40" rx="8" fill="#fde8e4" stroke="#b06a52"/>
+  <text x="430" y="104" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#223">寄存器</text>
+  <text x="624" y="104" font-family="Arial, sans-serif" font-size="13" fill="#475569">寄存器位于层次顶端</text>
+
+  <rect x="310" y="128" width="300" height="40" rx="8" fill="#fff4df" stroke="#a17228"/>
+  <text x="418" y="154" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#223">高速缓存</text>
+  <text x="624" y="154" font-family="Arial, sans-serif" font-size="13" fill="#475569">高速缓存位于寄存器与主存之间</text>
+
+  <rect x="310" y="178" width="300" height="40" rx="8" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="442" y="204" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#223">主存</text>
+
+  <rect x="310" y="228" width="300" height="40" rx="8" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="418" y="254" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#223">磁盘缓存</text>
+  <text x="624" y="254" font-family="Arial, sans-serif" font-size="13" fill="#475569">磁盘缓存连接主存与磁盘层次</text>
+
+  <rect x="310" y="278" width="300" height="40" rx="8" fill="#eef0ff" stroke="#5f6799"/>
+  <text x="442" y="304" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#223">磁盘</text>
+
+  <rect x="310" y="328" width="300" height="40" rx="8" fill="#eef0ff" stroke="#5f6799"/>
+  <text x="394" y="354" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#223">可移动存储介质</text>
+  <text x="624" y="354" font-family="Arial, sans-serif" font-size="13" fill="#475569">可移动存储介质位于层次底端</text>
+
+  <text x="46" y="416" font-family="Arial, sans-serif" font-size="14" fill="#475569">存储管理在这一层次中主要负责主存的用户区域，并兼顾主存与辅存之间的数据移动。</text>
+</svg>

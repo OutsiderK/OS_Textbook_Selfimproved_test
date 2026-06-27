@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">管理程序阶段的内存组织</title>
+  <desc id="desc">常驻监督程序固定占据低端内存，其中包含中断处理、设备驱动、作业定序与命令解释器，其余空间留给用户程序区。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .resident { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .comp { fill: #fff8e8; stroke: #b8791f; stroke-width: 1.4; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .label { font-size: 18px; font-weight: 700; }
+      .comp-label { font-size: 15px; font-weight: 700; }
+      .sub { font-size: 12px; fill: #3d4b52; }
+      .side { font-size: 14px; font-weight: 700; fill: #2f4858; }
+      .note { font-size: 13px; fill: #3d4b52; }
+      .axis { stroke: #6b7780; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <rect width="760" height="470" class="frame"/>
+  <text x="40" y="38" class="label" font-size="22">管理程序阶段的内存组织</text>
+
+  <!-- memory address axis -->
+  <text x="86" y="72" text-anchor="middle" class="side">低地址</text>
+  <line x1="86" y1="80" x2="86" y2="408" class="axis"/>
+  <text x="86" y="428" text-anchor="middle" class="side">高地址</text>
+
+  <!-- resident monitor block -->
+  <rect x="120" y="80" width="520" height="200" class="resident"/>
+  <text x="380" y="106" text-anchor="middle" class="label">常驻监督程序（管理程序）</text>
+
+  <rect x="140" y="124" width="230" height="64" class="comp"/>
+  <text x="255" y="150" text-anchor="middle" class="comp-label">中断处理</text>
+  <text x="255" y="172" text-anchor="middle" class="sub">响应硬件与异常事件</text>
+
+  <rect x="390" y="124" width="230" height="64" class="comp"/>
+  <text x="505" y="150" text-anchor="middle" class="comp-label">设备驱动</text>
+  <text x="505" y="172" text-anchor="middle" class="sub">统一驱动外部设备</text>
+
+  <rect x="140" y="200" width="230" height="64" class="comp"/>
+  <text x="255" y="226" text-anchor="middle" class="comp-label">作业定序</text>
+  <text x="255" y="248" text-anchor="middle" class="sub">按次序自动切换作业</text>
+
+  <rect x="390" y="200" width="230" height="64" class="comp"/>
+  <text x="505" y="226" text-anchor="middle" class="comp-label">命令 / JCL 解释器</text>
+  <text x="505" y="248" text-anchor="middle" class="sub">解释作业控制语句</text>
+
+  <!-- user program area -->
+  <rect x="120" y="288" width="520" height="120" class="user"/>
+  <text x="380" y="338" text-anchor="middle" class="label">用户程序区</text>
+  <text x="380" y="364" text-anchor="middle" class="sub">依次装入并运行各个用户作业</text>
+
+  <text x="40" y="450" class="note">常驻部分长期占据内存、对所有作业可见；用户程序区被一个个作业轮流使用，机器不再需要人工逐步干预。</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" role="img" aria-labelledby="title desc">
+  <title id="title">进程队列管理</title>
+  <desc id="desc">新进程提交后进入就绪队列，被指派后占用 CPU；时间片用完则超时返回就绪队列，请求事件则进入对应的等待队列，事件出现后再回到就绪队列。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .ready { fill: #eef6ff; stroke: #3867a8; stroke-width: 1.8; }
+      .cpu { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .wq { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 1.8; }
+      .slot { fill: #ffffff; stroke: #8aa0c4; stroke-width: 1; }
+      .wslot { fill: #ffffff; stroke: #79b394; stroke-width: 1; }
+      .lbl { font-size: 14px; font-weight: 700; }
+      .edge { font-size: 12.5px; fill: #2f4858; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.7; fill: none; }
+    </style>
+    <marker id="a5" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="840" height="520" class="frame"/>
+  <text x="36" y="38" class="lbl" font-size="21">图 5-5：进程队列管理</text>
+
+  <!-- submit -->
+  <text x="40" y="120" class="lbl">提交</text>
+  <line x1="86" y1="114" x2="150" y2="114" class="arrow" marker-end="url(#a5)"/>
+
+  <!-- ready queue -->
+  <rect x="150" y="92" width="320" height="48" rx="6" class="ready"/>
+  <rect x="160" y="100" width="60" height="32" class="slot"/>
+  <rect x="224" y="100" width="60" height="32" class="slot"/>
+  <rect x="288" y="100" width="60" height="32" class="slot"/>
+  <text x="410" y="121" text-anchor="middle" class="lbl">就绪队列</text>
+
+  <!-- dispatch to CPU -->
+  <line x1="470" y1="114" x2="560" y2="114" class="arrow" marker-end="url(#a5)"/>
+  <text x="476" y="104" class="edge">指派</text>
+  <rect x="560" y="86" width="160" height="60" rx="8" class="cpu"/>
+  <text x="640" y="122" text-anchor="middle" class="lbl">CPU（运行）</text>
+
+  <!-- timeout back to ready -->
+  <path d="M620,146 L620,200 L310,200 L310,142" class="arrow" marker-end="url(#a5)"/>
+  <text x="430" y="194" class="edge">超时</text>
+
+  <!-- to wait queues -->
+  <line x1="700" y1="146" x2="700" y2="250" class="arrow" marker-end="url(#a5)"/>
+  <text x="708" y="210" class="edge">请求 / 等待事件</text>
+
+  <!-- wait queue 1 -->
+  <rect x="430" y="262" width="290" height="44" rx="6" class="wq"/>
+  <rect x="440" y="270" width="54" height="28" class="wslot"/>
+  <rect x="498" y="270" width="54" height="28" class="wslot"/>
+  <text x="640" y="289" text-anchor="middle" class="lbl">等待队列（事件 A）</text>
+
+  <!-- wait queue 2 -->
+  <rect x="430" y="320" width="290" height="44" rx="6" class="wq"/>
+  <rect x="440" y="328" width="54" height="28" class="wslot"/>
+  <text x="640" y="347" text-anchor="middle" class="lbl">等待队列（事件 B）</text>
+
+  <!-- event occurs back to ready -->
+  <path d="M430,284 L150,284 L150,140" class="arrow" marker-end="url(#a5)"/>
+  <text x="200" y="278" class="edge">事件出现</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="412" class="note">提交进入就绪队列</text>
+  <text x="36" y="434" class="note">指派后占用 CPU</text>
+  <text x="36" y="456" class="note">超时返回就绪队列</text>
+  <text x="36" y="478" class="note">等待事件进入对应等待队列</text>
+  <text x="36" y="500" class="note">事件出现后回到就绪队列</text>
+</svg>

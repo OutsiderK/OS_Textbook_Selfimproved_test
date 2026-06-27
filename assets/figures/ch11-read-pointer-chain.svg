@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="390" viewBox="0 0 1040 390" role="img" aria-labelledby="title desc">
+  <title id="title">read 调用的指针链</title>
+  <desc id="desc">fd 指向进程打开文件表，进程表指向系统打开文件表 fp，系统表包含 f_flag、f_count、f_offset、f_inode，活动 inode 的 i_addr 指向物理块。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .proc { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 5; }
+      .system { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 5; }
+      .inode { fill: #f6eefb; stroke: #7a5799; stroke-width: 2; rx: 5; }
+      .block { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 5; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="24" y="34" width="992" height="304" class="panel"/>
+  <text x="520" y="66" text-anchor="middle" class="head">read(fd, buf, count) 的定位链</text>
+
+  <rect x="62" y="145" width="120" height="62" class="proc"/>
+  <text x="122" y="171" text-anchor="middle" class="small">fd</text>
+  <text x="122" y="192" text-anchor="middle" class="note">文件描述符 fd 指向进程打开文件表</text>
+
+  <rect x="235" y="128" width="176" height="96" class="proc"/>
+  <text x="323" y="157" text-anchor="middle" class="small">进程打开文件表</text>
+  <text x="323" y="187" text-anchor="middle" class="note">进程打开文件表指向系统打开文件表 fp</text>
+
+  <rect x="475" y="108" width="210" height="136" class="system"/>
+  <text x="580" y="137" text-anchor="middle" class="small">系统打开文件表 fp</text>
+  <text x="580" y="165" text-anchor="middle" class="note">系统打开文件表含 f_flag/f_count/f_offset/f_inode</text>
+  <text x="580" y="197" text-anchor="middle" class="note">f_offset 指示本次读写位置</text>
+  <text x="580" y="222" text-anchor="middle" class="note">f_flag 检查读权限</text>
+
+  <rect x="748" y="120" width="160" height="78" class="inode"/>
+  <text x="828" y="150" text-anchor="middle" class="small">活动 inode</text>
+  <text x="828" y="176" text-anchor="middle" class="note">活动 inode 的 i_addr 指向物理块</text>
+
+  <rect x="748" y="258" width="160" height="48" class="block"/>
+  <text x="828" y="288" text-anchor="middle" class="small">物理块</text>
+
+  <path d="M182 176 L 235 176" class="arrow"/>
+  <path d="M411 176 L 475 176" class="arrow"/>
+  <path d="M685 176 L 748 159" class="arrow"/>
+  <path d="M828 198 L 828 258" class="arrow"/>
+
+  <text x="520" y="322" text-anchor="middle" class="note">read 实现依据 f_offset / count / i_addr 计算物理块地址，读入缓冲区后复制到用户主存区。</text>
+</svg>

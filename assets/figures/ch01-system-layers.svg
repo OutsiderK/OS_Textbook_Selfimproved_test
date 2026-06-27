@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="520" viewBox="0 0 780 520" role="img" aria-labelledby="title desc">
+  <title id="title">计算机系统的层次结构</title>
+  <desc id="desc">从用户、应用程序、系统程序、操作系统到计算机硬件的分层，并标出用户态与核心态的边界。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .layer { stroke: #2f4858; stroke-width: 2; }
+      .l-user { fill: #eef3ff; }
+      .l-app  { fill: #e8f0fe; }
+      .l-sys  { fill: #e7f5ee; }
+      .l-os   { fill: #fff1d6; stroke: #b8791f; }
+      .l-hw   { fill: #f1ecff; }
+      .label  { font-size: 18px; font-weight: 700; }
+      .sub    { font-size: 13px; fill: #3d4b52; }
+      .mode   { font-size: 15px; font-weight: 700; fill: #2f4858; }
+      .note   { font-size: 13px; fill: #3d4b52; }
+      .brace  { stroke: #6b7780; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  <rect width="780" height="520" fill="#fbfaf6"/>
+  <text x="40" y="40" class="label" font-size="22">计算机系统的层次结构</text>
+
+  <rect x="262" y="72"  width="300" height="54" class="layer l-user"/>
+  <text x="412" y="105" text-anchor="middle" class="label">用户</text>
+
+  <rect x="262" y="126" width="300" height="54" class="layer l-app"/>
+  <text x="412" y="159" text-anchor="middle" class="label">应用程序</text>
+
+  <rect x="262" y="180" width="300" height="54" class="layer l-sys"/>
+  <text x="412" y="213" text-anchor="middle" class="label">系统程序</text>
+
+  <rect x="262" y="234" width="300" height="54" class="layer l-os"/>
+  <text x="412" y="267" text-anchor="middle" class="label">操作系统</text>
+
+  <rect x="262" y="288" width="300" height="76" class="layer l-hw"/>
+  <text x="412" y="316" text-anchor="middle" class="label">计算机硬件</text>
+  <text x="412" y="343" text-anchor="middle" class="sub">CPU、存储器、I/O 设备</text>
+
+  <path d="M236 74 H224 V232 H236" class="brace"/>
+  <text x="150" y="157" text-anchor="middle" class="mode">用户态</text>
+
+  <path d="M236 236 H224 V286 H236" class="brace"/>
+  <text x="150" y="265" text-anchor="middle" class="mode">核心态</text>
+
+  <text x="40" y="404" class="note">用户位于应用程序之上，越往上越贴近使用者，越往下越贴近硬件。</text>
+  <text x="40" y="430" class="note">操作系统位于系统程序与硬件之间，向上提供服务、向下管理硬件。</text>
+  <text x="40" y="456" class="note">硬件包含 CPU、存储器和 I/O 设备，是整个系统的物理基础。</text>
+  <text x="40" y="482" class="note">用户态程序在操作系统之上运行；操作系统与硬件相邻，独占访问硬件的特权。</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="540" viewBox="0 0 840 540" role="img" aria-labelledby="title desc">
+  <title id="title">进程的挂起状态模型</title>
+  <desc id="desc">挂起把就绪态和等待态扩展出挂起就绪态与挂起等待态。被挂起的进程换出主存、不参与调度；挂起等待态在事件结束后转入挂起就绪态；解除挂起后回到内存中的就绪态或等待态。</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .frame { fill: #fbfaf6; }
+      .run { fill: #fff1d6; stroke: #b8791f; stroke-width: 2; }
+      .ready { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; }
+      .wait { fill: #e7f7ef; stroke: #2f8f5b; stroke-width: 2; }
+      .susp { fill: #f0f1f3; stroke: #6b7780; stroke-width: 2; stroke-dasharray: 5 3; }
+      .zone { fill: none; stroke: #c7ccd1; stroke-width: 1.4; }
+      .state { font-size: 16px; font-weight: 700; }
+      .edge { font-size: 12px; fill: #2f4858; }
+      .band { font-size: 13px; font-weight: 700; fill: #2f4858; }
+      .note { font-size: 13.5px; fill: #3d4b52; }
+      .arrow { stroke: #6b7780; stroke-width: 1.6; fill: none; }
+    </style>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7780"/>
+    </marker>
+  </defs>
+  <rect width="840" height="540" class="frame"/>
+  <text x="36" y="38" class="state" font-size="21">图 5-3：进程的挂起状态模型</text>
+
+  <!-- zones -->
+  <rect x="40" y="64" width="360" height="320" rx="10" class="zone"/>
+  <text x="60" y="88" class="band">主存中（参与调度）</text>
+  <rect x="440" y="64" width="360" height="320" rx="10" class="zone"/>
+  <text x="460" y="88" class="band">已换出主存（不参与调度）</text>
+
+  <!-- in-memory states -->
+  <rect x="150" y="110" width="140" height="52" rx="8" class="run"/>
+  <text x="220" y="142" text-anchor="middle" class="state">运行态</text>
+  <rect x="80" y="220" width="140" height="52" rx="8" class="ready"/>
+  <text x="150" y="252" text-anchor="middle" class="state">就绪态</text>
+  <rect x="230" y="300" width="140" height="52" rx="8" class="wait"/>
+  <text x="300" y="332" text-anchor="middle" class="state">等待态</text>
+
+  <!-- suspended states -->
+  <rect x="540" y="220" width="160" height="52" rx="8" class="susp"/>
+  <text x="620" y="252" text-anchor="middle" class="state">挂起就绪态</text>
+  <rect x="540" y="300" width="160" height="52" rx="8" class="susp"/>
+  <text x="620" y="332" text-anchor="middle" class="state">挂起等待态</text>
+
+  <!-- core transitions (brief) -->
+  <line x1="220" y1="162" x2="200" y2="220" class="arrow" marker-end="url(#a3)"/>
+  <text x="120" y="196" class="edge">落选</text>
+  <line x1="190" y1="220" x2="210" y2="162" class="arrow" marker-end="url(#a3)"/>
+  <text x="228" y="196" class="edge">选中</text>
+  <line x1="250" y1="162" x2="290" y2="300" class="arrow" marker-end="url(#a3)"/>
+  <text x="300" y="232" class="edge">等待事件</text>
+  <line x1="232" y1="320" x2="160" y2="272" class="arrow" marker-end="url(#a3)"/>
+  <text x="150" y="300" class="edge">事件出现</text>
+
+  <!-- suspend / activate between zones -->
+  <line x1="220" y1="246" x2="538" y2="246" class="arrow" marker-end="url(#a3)"/>
+  <text x="330" y="238" class="edge">挂起（换出）</text>
+  <line x1="538" y1="262" x2="220" y2="262" class="arrow" marker-end="url(#a3)"/>
+  <text x="330" y="280" class="edge">解除挂起（换入）</text>
+  <line x1="370" y1="326" x2="538" y2="326" class="arrow" marker-end="url(#a3)"/>
+  <text x="402" y="318" class="edge">挂起</text>
+  <line x1="538" y1="340" x2="372" y2="340" class="arrow" marker-end="url(#a3)"/>
+  <text x="402" y="358" class="edge">解除挂起</text>
+
+  <!-- suspended-wait -> suspended-ready -->
+  <line x1="620" y1="300" x2="620" y2="272" class="arrow" marker-end="url(#a3)"/>
+  <text x="630" y="290" class="edge">事件出现</text>
+
+  <!-- notes carrying the teaching points -->
+  <text x="36" y="438" class="note">挂起释放主存资源且不参与进程调度</text>
+  <text x="36" y="460" class="note">挂起等待态等待事件结束后进入挂起就绪态</text>
+  <text x="36" y="482" class="note">解除挂起后回到就绪态或等待态</text>
+</svg>

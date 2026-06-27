@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="460" viewBox="0 0 980 460" role="img" aria-labelledby="title desc">
+  <title id="title">Linux 中断处理流程</title>
+  <desc id="desc">系统调用、自陷、快慢中断、下半部分与信号处理之间的衔接关系。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .user { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 8; }
+      .kernel { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .defer { fill: #edf8f3; stroke: #2f7d57; stroke-width: 2; rx: 8; }
+      .label { font-size: 15px; font-weight: 700; }
+      .small { font-size: 12px; }
+      .arrow { stroke: #2f4858; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .cut { stroke: #bf6f33; stroke-width: 1.6; stroke-dasharray: 8 6; }
+    </style>
+  </defs>
+
+  <rect x="40" y="40" width="360" height="74" class="user"/>
+  <text x="220" y="70" text-anchor="middle" class="label">用户态进程</text>
+  <text x="220" y="94" text-anchor="middle" class="small">用户态进程可因中断或自陷进入核心态</text>
+
+  <line x1="20" y1="138" x2="960" y2="138" class="cut"/>
+  <text x="900" y="130" text-anchor="middle" class="small">态边界</text>
+
+  <rect x="40" y="158" width="200" height="70" class="kernel"/>
+  <text x="140" y="190" text-anchor="middle" class="label">系统调用 / 自陷</text>
+  <text x="140" y="212" text-anchor="middle" class="small">system_call</text>
+
+  <rect x="270" y="158" width="200" height="70" class="kernel"/>
+  <text x="370" y="190" text-anchor="middle" class="label">慢中断</text>
+  <text x="370" y="212" text-anchor="middle" class="small">处理时不关中断</text>
+
+  <rect x="500" y="158" width="200" height="70" class="kernel"/>
+  <text x="600" y="190" text-anchor="middle" class="label">快中断</text>
+  <text x="600" y="212" text-anchor="middle" class="small">快中断排队下半部分</text>
+
+  <path d="M220 114 V158" class="arrow"/>
+  <path d="M300 114 L370 158" class="arrow"/>
+  <path d="M360 114 L600 158" class="arrow"/>
+
+  <rect x="730" y="158" width="220" height="70" class="defer"/>
+  <text x="840" y="190" text-anchor="middle" class="label">下半部分队列</text>
+  <text x="840" y="212" text-anchor="middle" class="small">do_bottom_half/do_softirq 处理延迟工作</text>
+  <path d="M700 193 H730" class="arrow"/>
+
+  <rect x="270" y="280" width="430" height="74" class="kernel"/>
+  <text x="485" y="310" text-anchor="middle" class="label">ret_from_sys_call</text>
+  <text x="485" y="334" text-anchor="middle" class="small">ret_from_sys_call 路径可能处理积累信号并调度下半部分</text>
+  <path d="M370 228 V280" class="arrow"/>
+  <path d="M600 228 V280" class="arrow"/>
+  <path d="M840 228 L700 300" class="arrow"/>
+
+  <rect x="40" y="392" width="430" height="50" class="user"/>
+  <text x="255" y="423" text-anchor="middle" class="small">返回用户态：必要时先执行信号处理，再回到断点</text>
+  <path d="M400 354 L300 392" class="arrow"/>
+</svg>

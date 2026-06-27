@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" role="img" aria-labelledby="title desc">
+  <title id="title">Belady 异常与 FIFO 缺页曲线</title>
+  <desc id="desc">示意 FIFO 在页框数增加时缺页次数可能反而增加，提醒替换算法评价要看缺页率曲线。</desc>
+  <defs>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif; fill: #1d2930; }
+      .axis { stroke: #263238; stroke-width: 2.2; }
+      .grid { stroke: #d7dee2; stroke-width: 1.4; }
+      .line { fill: none; stroke: #b33a3a; stroke-width: 4; }
+      .point { fill: #ffffff; stroke: #b33a3a; stroke-width: 3; }
+      .note { fill: #fff4e6; stroke: #9a5b00; stroke-width: 1.8; rx: 8; }
+      .soft { fill: #eef7f4; stroke: #52796f; stroke-width: 1.8; rx: 8; }
+      .label { font-weight: 700; font-size: 21px; }
+      .small { font-size: 17px; }
+      .tiny { font-size: 15px; }
+    </style>
+  </defs>
+  <rect x="18" y="18" width="864" height="434" fill="#ffffff" stroke="#d7dee2" stroke-width="2" rx="10"/>
+  <text class="label" x="52" y="58">FIFO 的 Belady 异常</text>
+  <text class="small" x="52" y="88">该例用于提醒替换算法评价要看缺页率曲线</text>
+
+  <line class="axis" x1="110" y1="360" x2="610" y2="360"/>
+  <line class="axis" x1="110" y1="360" x2="110" y2="120"/>
+  <line class="grid" x1="110" y1="300" x2="610" y2="300"/>
+  <line class="grid" x1="110" y1="240" x2="610" y2="240"/>
+  <line class="grid" x1="110" y1="180" x2="610" y2="180"/>
+  <text class="tiny" x="78" y="365">少</text>
+  <text class="tiny" x="78" y="125">多</text>
+  <text class="tiny" x="264" y="404">页框数增加</text>
+  <text class="tiny" x="34" y="238" transform="rotate(-90 34 238)">缺页次数</text>
+
+  <polyline class="line" points="165,285 290,235 415,205 540,245"/>
+  <circle class="point" cx="165" cy="285" r="7"/>
+  <circle class="point" cx="290" cy="235" r="7"/>
+  <circle class="point" cx="415" cy="205" r="7"/>
+  <circle class="point" cx="540" cy="245" r="7"/>
+  <text class="tiny" x="145" y="383">3</text>
+  <text class="tiny" x="270" y="383">4</text>
+  <text class="tiny" x="395" y="383">5</text>
+  <text class="tiny" x="520" y="383">6</text>
+
+  <rect class="note" x="642" y="124" width="206" height="112"/>
+  <text class="small" x="745" y="154" text-anchor="middle">不能简单认为页框数增加一定降低 FIFO 缺页数</text>
+  <text class="tiny" x="745" y="189" text-anchor="middle">曲线可能在某段反向上升</text>
+  <text class="tiny" x="745" y="214" text-anchor="middle">这就是 Belady 异常</text>
+
+  <rect class="soft" x="642" y="270" width="206" height="96"/>
+  <text class="small" x="745" y="300" text-anchor="middle">Belady 异常说明 FIFO 不具备栈性质</text>
+  <text class="tiny" x="745" y="332" text-anchor="middle">驻留集合不会随页框数增加而稳定包含旧集合</text>
+</svg>

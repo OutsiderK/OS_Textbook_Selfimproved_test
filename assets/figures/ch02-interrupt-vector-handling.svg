@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">中断向量表与软件侧处理</title>
+  <desc id="desc">中断向量表保存各服务程序入口地址，软件侧补充保护现场、处理并恢复。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f4858"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .thead { fill: #29465b; }
+      .trow { fill: #f4fbf9; stroke: #2f4858; stroke-width: 1.4; }
+      .sw { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 8; }
+      .caption { font-size: 15px; font-weight: 700; }
+      .hcell { font-size: 14px; font-weight: 700; fill: #ffffff; }
+      .cell { font-size: 13px; }
+      .label { font-size: 15px; font-weight: 700; }
+      .small { font-size: 12px; }
+      .arrow { stroke: #2f4858; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="40" y="40" class="caption">中断向量表保存各中断服务程序入口地址</text>
+
+  <rect x="40" y="56" width="180" height="36" class="thead"/>
+  <rect x="220" y="56" width="300" height="36" class="thead"/>
+  <text x="130" y="80" text-anchor="middle" class="hcell">中断号 / 向量</text>
+  <text x="370" y="80" text-anchor="middle" class="hcell">服务程序入口地址</text>
+
+  <rect x="40" y="92" width="180" height="34" class="trow"/>
+  <rect x="220" y="92" width="300" height="34" class="trow"/>
+  <text x="130" y="114" text-anchor="middle" class="cell">向量 0</text>
+  <text x="370" y="114" text-anchor="middle" class="cell">addr_handler_0</text>
+
+  <rect x="40" y="126" width="180" height="34" class="trow"/>
+  <rect x="220" y="126" width="300" height="34" class="trow"/>
+  <text x="130" y="148" text-anchor="middle" class="cell">向量 1</text>
+  <text x="370" y="148" text-anchor="middle" class="cell">addr_handler_1</text>
+
+  <rect x="40" y="160" width="180" height="34" class="trow"/>
+  <rect x="220" y="160" width="300" height="34" class="trow"/>
+  <text x="130" y="182" text-anchor="middle" class="cell">向量 n</text>
+  <text x="370" y="182" text-anchor="middle" class="cell">addr_handler_n</text>
+
+  <path d="M520 142 H612" class="arrow"/>
+  <text x="566" y="132" text-anchor="middle" class="small">定位入口</text>
+
+  <rect x="612" y="92" width="330" height="64" class="sw"/>
+  <text x="777" y="118" text-anchor="middle" class="label">中断服务程序</text>
+  <text x="777" y="140" text-anchor="middle" class="small">由向量表入口地址进入</text>
+
+  <rect x="612" y="196" width="330" height="64" class="sw"/>
+  <text x="777" y="222" text-anchor="middle" class="label">软件进一步保护现场</text>
+  <text x="777" y="244" text-anchor="middle" class="small">软件进一步保护未由硬件保存的现场</text>
+  <path d="M777 156 V196" class="arrow"/>
+
+  <rect x="612" y="300" width="330" height="64" class="sw"/>
+  <text x="777" y="326" text-anchor="middle" class="label">处理后恢复</text>
+  <text x="777" y="348" text-anchor="middle" class="small">处理后恢复正常操作</text>
+  <path d="M777 260 V300" class="arrow"/>
+
+  <text x="300" y="332" text-anchor="middle" class="small">硬件保存了现行 PSW 等基本现场；其余寄存器与上下文由中断服务程序软件补充保存。</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="470" viewBox="0 0 920 470" role="img" aria-labelledby="title desc">
+  <title id="title">固定分区的内存布局与主存分配表</title>
+  <desc id="desc">左侧是固定分区的内存布局，右侧是与之对应的主存分配表。</desc>
+  <rect width="920" height="470" fill="#f8faf7"/>
+  <text x="46" y="42" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">内存布局与分配表是同一状态的两种记法</text>
+
+  <text x="120" y="86" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#38505a">内存布局</text>
+  <rect x="120" y="100" width="240" height="36" fill="#fde8e4" stroke="#b06a52"/>
+  <text x="140" y="124" font-family="Arial, sans-serif" font-size="13" fill="#223">操作系统（OS 占 8K）</text>
+  <rect x="120" y="136" width="240" height="71" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="140" y="166" font-family="Arial, sans-serif" font-size="13" fill="#223">用户分区1 起始 8K 长 16K</text>
+  <text x="140" y="188" font-family="Arial, sans-serif" font-size="13" fill="#475569">空闲</text>
+  <rect x="120" y="207" width="240" height="71" fill="#e7f1ef" stroke="#507c75"/>
+  <text x="140" y="237" font-family="Arial, sans-serif" font-size="13" fill="#223">用户分区2 起始 24K 长 16K</text>
+  <text x="140" y="259" font-family="Arial, sans-serif" font-size="13" fill="#475569">空闲</text>
+  <rect x="120" y="278" width="240" height="142" fill="#fff4df" stroke="#a17228"/>
+  <text x="140" y="316" font-family="Arial, sans-serif" font-size="13" fill="#223">用户分区3 起始 40K 长 32K，装入 Job1</text>
+  <text x="140" y="340" font-family="Arial, sans-serif" font-size="13" fill="#475569">Job1 不足 32K 的部分成为分区内空闲</text>
+
+  <text x="86" y="106" font-family="Arial, sans-serif" font-size="12" fill="#475569">0K</text>
+  <text x="86" y="142" font-family="Arial, sans-serif" font-size="12" fill="#475569">8K</text>
+  <text x="80" y="213" font-family="Arial, sans-serif" font-size="12" fill="#475569">24K</text>
+  <text x="80" y="284" font-family="Arial, sans-serif" font-size="12" fill="#475569">40K</text>
+  <text x="80" y="420" font-family="Arial, sans-serif" font-size="12" fill="#475569">72K</text>
+
+  <text x="470" y="86" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#38505a">主存分配表</text>
+  <rect x="470" y="100" width="400" height="36" fill="#dde8e2" stroke="#507c75"/>
+  <text x="486" y="124" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#223">分区号　　起始地址　　长度　　占用标志</text>
+  <rect x="470" y="136" width="400" height="36" fill="#ffffff" stroke="#507c75"/>
+  <text x="486" y="160" font-family="Arial, sans-serif" font-size="13" fill="#223">1　　　　　8K　　　　16K　　　0（空闲）</text>
+  <rect x="470" y="172" width="400" height="36" fill="#ffffff" stroke="#507c75"/>
+  <text x="486" y="196" font-family="Arial, sans-serif" font-size="13" fill="#223">2　　　　　24K　　　 16K　　　0（空闲）</text>
+  <rect x="470" y="208" width="400" height="36" fill="#fff4df" stroke="#a17228"/>
+  <text x="486" y="232" font-family="Arial, sans-serif" font-size="13" fill="#223">3　　　　　40K　　　 32K　　　Job1</text>
+
+  <text x="470" y="290" font-family="Arial, sans-serif" font-size="14" fill="#475569">分区在系统启动时一次划定，运行期间</text>
+  <text x="470" y="312" font-family="Arial, sans-serif" font-size="14" fill="#475569">只改占用标志，不改起始地址和长度。</text>
+  <text x="470" y="350" font-family="Arial, sans-serif" font-size="14" fill="#475569">每个分区任一时刻最多装入一道程序。</text>
+</svg>

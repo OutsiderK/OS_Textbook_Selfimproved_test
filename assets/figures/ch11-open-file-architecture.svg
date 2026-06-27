@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="430" viewBox="0 0 1040 430" role="img" aria-labelledby="title desc">
+  <title id="title">UNIX 打开文件动态结构</title>
+  <desc id="desc">用户文件描述符经进程打开文件表连接到系统打开文件表，再指向活动 inode、外存 inode 和数据块。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .proc { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 5; }
+      .system { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 5; }
+      .inode { fill: #f6eefb; stroke: #7a5799; stroke-width: 2; rx: 5; }
+      .disk { fill: #edf8f3; stroke: #2f7d63; stroke-width: 2; rx: 5; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="24" y="34" width="992" height="344" class="panel"/>
+  <text x="520" y="66" text-anchor="middle" class="head">从 fd 到磁盘块：三张动态表把一次打开文件连起来</text>
+
+  <rect x="62" y="124" width="160" height="94" class="proc"/>
+  <text x="142" y="151" text-anchor="middle" class="small">用户文件描述符</text>
+  <text x="142" y="178" text-anchor="middle" class="small">fd</text>
+  <text x="142" y="204" text-anchor="middle" class="note">进程私有整数下标</text>
+
+  <rect x="282" y="114" width="188" height="114" class="proc"/>
+  <text x="376" y="143" text-anchor="middle" class="small">进程打开文件表</text>
+  <text x="376" y="172" text-anchor="middle" class="note">用户文件描述符经进程打开文件表连接到系统打开文件表</text>
+  <text x="376" y="205" text-anchor="middle" class="note">保存指向 fp 的指针</text>
+
+  <rect x="532" y="114" width="188" height="114" class="system"/>
+  <text x="626" y="143" text-anchor="middle" class="small">系统打开文件表</text>
+  <text x="626" y="172" text-anchor="middle" class="note">系统打开文件表再指向活动 inode</text>
+  <text x="626" y="205" text-anchor="middle" class="note">保存 f_flag / f_count / f_offset</text>
+
+  <rect x="782" y="94" width="188" height="84" class="inode"/>
+  <text x="876" y="126" text-anchor="middle" class="small">内存活动 inode</text>
+  <text x="876" y="153" text-anchor="middle" class="note">i_count / i_addr / 状态</text>
+
+  <rect x="782" y="224" width="188" height="62" class="inode"/>
+  <text x="876" y="260" text-anchor="middle" class="small">外存 inode</text>
+
+  <rect x="782" y="312" width="188" height="48" class="disk"/>
+  <text x="876" y="342" text-anchor="middle" class="small">数据块</text>
+
+  <path d="M222 171 L 282 171" class="arrow"/>
+  <path d="M470 171 L 532 171" class="arrow"/>
+  <path d="M720 154 L 782 136" class="arrow"/>
+  <path d="M876 178 L 876 224" class="arrow"/>
+  <path d="M876 286 L 876 312" class="arrow"/>
+
+  <text x="520" y="332" text-anchor="middle" class="note">活动 inode 关联外存 inode 和数据块；打开文件期间，内存表项让后续 read/write 不必每次从路径名重新查找。</text>
+</svg>

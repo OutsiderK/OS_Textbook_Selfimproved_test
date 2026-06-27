@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="540" viewBox="0 0 1040 540" role="img" aria-labelledby="title desc">
+  <title id="title">目录结构演化：一级、二级、树形</title>
+  <desc id="desc">从一级目录到二级目录再到树形目录，命名空间逐级扩展。</desc>
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#24435a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "Noto Sans CJK SC", sans-serif; fill: #17252a; }
+      .panel { fill: #f7fafc; stroke: #9eb3c6; stroke-width: 1.5; rx: 8; }
+      .dir { fill: #eef6ff; stroke: #3867a8; stroke-width: 2; rx: 4; }
+      .udir { fill: #fff4df; stroke: #b8791f; stroke-width: 2; rx: 4; }
+      .file { fill: #edf8f3; stroke: #2f7d63; stroke-width: 1.5; rx: 4; }
+      .head { font-size: 18px; font-weight: 700; }
+      .small { font-size: 13px; }
+      .note { font-size: 12px; fill: #4a5a66; }
+      .line { stroke: #607d8b; stroke-width: 1.5; fill: none; }
+      .arrow { stroke: #24435a; stroke-width: 2; fill: none; marker-end: url(#arrow2); }
+    </style>
+  </defs>
+
+  <!-- Panel 1: 一级目录 -->
+  <rect x="20" y="40" width="320" height="480" class="panel"/>
+  <text x="180" y="68" text-anchor="middle" class="head">一级目录</text>
+
+  <rect x="80" y="90" width="200" height="36" class="dir"/>
+  <text x="180" y="113" text-anchor="middle" class="small">主目录（单一命名空间）</text>
+
+  <rect x="60" y="146" width="240" height="28" class="file"/>
+  <text x="180" y="165" text-anchor="middle" class="small">目录项 file1 → 文件 file1</text>
+  <rect x="60" y="180" width="240" height="28" class="file"/>
+  <text x="180" y="199" text-anchor="middle" class="small">目录项 file2 → 文件 file2</text>
+  <rect x="60" y="214" width="240" height="28" class="file"/>
+  <text x="180" y="233" text-anchor="middle" class="small">目录项 file3 → 文件 file3</text>
+  <rect x="60" y="248" width="240" height="28" class="file"/>
+  <text x="180" y="267" text-anchor="middle" class="small">目录项 ……</text>
+
+  <text x="180" y="306" text-anchor="middle" class="note">目录项与文件一一对应</text>
+  <text x="180" y="326" text-anchor="middle" class="note">所有文件共用同一个目录命名空间</text>
+  <text x="180" y="362" text-anchor="middle" class="note">缺点是重名冲突</text>
+  <text x="180" y="382" text-anchor="middle" class="note">两个用户想用同名文件就会撞名</text>
+
+  <!-- Panel 2: 二级目录 -->
+  <rect x="360" y="40" width="320" height="480" class="panel"/>
+  <text x="520" y="68" text-anchor="middle" class="head">二级目录</text>
+
+  <rect x="420" y="90" width="200" height="36" class="dir"/>
+  <text x="520" y="113" text-anchor="middle" class="small">主文件目录（MFD）</text>
+  <text x="520" y="142" text-anchor="middle" class="note">第一级目录记录用户及其文件目录地址</text>
+
+  <rect x="380" y="160" width="120" height="32" class="udir"/>
+  <text x="440" y="180" text-anchor="middle" class="small">用户 A 目录</text>
+  <rect x="540" y="160" width="120" height="32" class="udir"/>
+  <text x="600" y="180" text-anchor="middle" class="small">用户 B 目录</text>
+
+  <path d="M520 126 L 440 160" class="line"/>
+  <path d="M520 126 L 600 160" class="line"/>
+
+  <rect x="380" y="208" width="120" height="26" class="file"/>
+  <text x="440" y="225" text-anchor="middle" class="small">report.txt</text>
+  <rect x="380" y="238" width="120" height="26" class="file"/>
+  <text x="440" y="255" text-anchor="middle" class="small">data.csv</text>
+
+  <rect x="540" y="208" width="120" height="26" class="file"/>
+  <text x="600" y="225" text-anchor="middle" class="small">report.txt</text>
+  <rect x="540" y="238" width="120" height="26" class="file"/>
+  <text x="600" y="255" text-anchor="middle" class="small">notes.md</text>
+
+  <text x="520" y="298" text-anchor="middle" class="note">第二级用户文件目录记录文件项</text>
+  <text x="520" y="320" text-anchor="middle" class="note">不同用户可拥有同名文件</text>
+  <text x="520" y="356" text-anchor="middle" class="note">命名空间从一张表扩展为按用户分桶</text>
+
+  <!-- Panel 3: 树形目录 -->
+  <rect x="700" y="40" width="320" height="480" class="panel"/>
+  <text x="860" y="68" text-anchor="middle" class="head">树形目录</text>
+
+  <rect x="820" y="86" width="80" height="32" class="dir"/>
+  <text x="860" y="106" text-anchor="middle" class="small">根目录以 / 表示</text>
+
+  <rect x="720" y="146" width="70" height="28" class="udir"/>
+  <text x="755" y="165" text-anchor="middle" class="small">dev</text>
+  <rect x="800" y="146" width="60" height="28" class="udir"/>
+  <text x="830" y="165" text-anchor="middle" class="small">bin</text>
+  <rect x="870" y="146" width="60" height="28" class="udir"/>
+  <text x="900" y="165" text-anchor="middle" class="small">lib</text>
+  <rect x="940" y="146" width="60" height="28" class="udir"/>
+  <text x="970" y="165" text-anchor="middle" class="small">etc</text>
+  <rect x="800" y="186" width="60" height="28" class="udir"/>
+  <text x="830" y="205" text-anchor="middle" class="small">usr</text>
+
+  <path d="M860 118 L 755 146" class="line"/>
+  <path d="M860 118 L 830 146" class="line"/>
+  <path d="M860 118 L 900 146" class="line"/>
+  <path d="M860 118 L 970 146" class="line"/>
+  <path d="M860 118 L 830 186" class="line"/>
+
+  <rect x="780" y="230" width="100" height="28" class="udir"/>
+  <text x="830" y="249" text-anchor="middle" class="small">user</text>
+
+  <path d="M830 214 L 830 230" class="line"/>
+
+  <rect x="760" y="272" width="140" height="28" class="udir"/>
+  <text x="830" y="291" text-anchor="middle" class="small">include</text>
+
+  <path d="M830 258 L 830 272" class="line"/>
+
+  <rect x="740" y="314" width="180" height="28" class="file"/>
+  <text x="830" y="333" text-anchor="middle" class="small">testfile.c</text>
+
+  <path d="M830 300 L 830 314" class="line"/>
+
+  <text x="860" y="370" text-anchor="middle" class="note">路径逐级经过 dev/bin/lib/etc/usr 等目录</text>
+  <text x="860" y="392" text-anchor="middle" class="note">示例路径为 /user/include/testfile.c</text>
+  <text x="860" y="420" text-anchor="middle" class="note">文件全名 = 目录路径 + 文件名</text>
+
+  <text x="520" y="500" text-anchor="middle" class="note">核心演化：从单张表 → 按用户分桶 → 任意层次的树，命名空间逐级扩展，重名问题逐级缓解。</text>
+</svg>
