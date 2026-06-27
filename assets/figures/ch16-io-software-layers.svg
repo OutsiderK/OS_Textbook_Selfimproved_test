@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="560" viewBox="0 0 920 560" role="img" aria-labelledby="title desc">
+  <title id="title">I/O 软件层次</title>
+  <desc id="desc">I/O 请求沿层次向下传递，I/O 应答沿层次向上返回，各层从用户级软件到硬件逐级靠近设备。</desc>
+  <defs>
+    <marker id="down" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 0 L 5 10 z" fill="#334155"/>
+    </marker>
+    <marker id="up" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 10 L 10 10 L 5 0 z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.layer{rx:8;stroke-width:2}.l1{fill:#eff6ff;stroke:#2563eb}.l2{fill:#ecfdf5;stroke:#059669}.l3{fill:#fff7ed;stroke:#c2410c}.l4{fill:#fef2f2;stroke:#dc2626}.l5{fill:#f1f5f9;stroke:#475569}.title{font:21px Arial,sans-serif;font-weight:700;fill:#0f172a}.t{font:15px Arial,sans-serif;fill:#111827}.small{font:13px Arial,sans-serif;fill:#475569}.down{stroke:#334155;stroke-width:2.5;marker-end:url(#down)}.up{stroke:#0f766e;stroke-width:2.5;marker-end:url(#up)}
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="560"/>
+  <text class="title" x="42" y="44">I/O 软件层次：请求向下，应答向上</text>
+  <text class="small" x="42" y="72">越往下越接近硬件，越往上越接近统一接口和用户视角。</text>
+
+  <rect class="layer l1" x="230" y="104" width="460" height="58"/>
+  <text class="t" x="382" y="139">用户级 I/O 软件</text>
+  <text class="small" x="704" y="138">调用、格式化、虚拟化</text>
+  <rect class="layer l2" x="230" y="184" width="460" height="58"/>
+  <text class="t" x="364" y="219">与设备无关的 I/O 软件</text>
+  <text class="small" x="704" y="211">命名、保护、阻塞</text>
+  <text class="small" x="704" y="232">缓冲和分配</text>
+  <rect class="layer l3" x="230" y="264" width="460" height="58"/>
+  <text class="t" x="390" y="299">设备驱动程序</text>
+  <text class="small" x="704" y="291">建立设备寄存器</text>
+  <text class="small" x="704" y="312">检查状态</text>
+  <rect class="layer l4" x="230" y="344" width="460" height="58"/>
+  <text class="t" x="390" y="379">中断处理程序</text>
+  <text class="small" x="704" y="371">I/O 结束时</text>
+  <text class="small" x="704" y="392">唤醒驱动程序</text>
+  <rect class="layer l5" x="230" y="424" width="460" height="58"/>
+  <text class="t" x="416" y="459">I/O 硬件</text>
+
+  <line class="down" x1="128" y1="118" x2="128" y2="468"/>
+  <text class="t" x="58" y="292">I/O 请求沿层次向下传递</text>
+  <line class="up" x1="792" y1="468" x2="792" y2="118"/>
+  <text class="t" x="724" y="292">I/O 应答沿层次向上返回</text>
+</svg>

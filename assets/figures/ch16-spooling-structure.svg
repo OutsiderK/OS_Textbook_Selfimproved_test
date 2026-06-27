@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">SPOOLing 系统结构</title>
+  <desc id="desc">输入设备经预输入程序把作业信息放入输入井，作业调度程序选择作业进入运行，运行结果经输出井和缓输出程序送往输出设备，井管理程序协调输入井、输出井与运行作业之间的数据。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.box{rx:8;stroke-width:2;fill:#eff6ff;stroke:#2563eb}.well{rx:8;stroke-width:2;fill:#ecfdf5;stroke:#059669}.job{rx:8;stroke-width:2;fill:#fff7ed;stroke:#c2410c}.mgr{rx:8;stroke-width:2;fill:#fef2f2;stroke:#dc2626}.t{font:15px Arial,sans-serif;fill:#111827}.title{font:21px Arial,sans-serif;font-weight:700;fill:#0f172a}.small{font:13px Arial,sans-serif;fill:#475569}.edge{stroke:#334155;stroke-width:2.4;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="520"/>
+  <text class="title" x="42" y="44">SPOOLing：把独占设备包装成可共享的排队服务</text>
+  <text class="small" x="42" y="72">磁盘上的输入井和输出井吸收速度差，后台程序在真实设备与运行作业之间搬运数据。</text>
+
+  <rect class="box" x="52" y="128" width="130" height="56"/><text class="t" x="87" y="162">输入设备</text>
+  <rect class="box" x="232" y="128" width="130" height="56"/><text class="t" x="267" y="162">预输入程序</text>
+  <rect class="well" x="412" y="128" width="130" height="56"/><text class="t" x="449" y="162">输入井</text>
+  <rect class="job" x="412" y="252" width="130" height="56"/><text class="t" x="428" y="286">作业调度程序</text>
+  <rect class="job" x="412" y="376" width="130" height="56"/><text class="t" x="449" y="410">运行作业</text>
+  <rect class="well" x="642" y="376" width="130" height="56"/><text class="t" x="679" y="410">输出井</text>
+  <rect class="box" x="822" y="376" width="130" height="56"/><text class="t" x="857" y="410">缓输出程序</text>
+  <rect class="box" x="822" y="252" width="130" height="56"/><text class="t" x="857" y="286">输出设备</text>
+  <rect class="mgr" x="642" y="208" width="130" height="74"/><text class="t" x="672" y="237">井管理程序</text><text class="small" x="666" y="260">协调井与作业</text>
+
+  <path class="edge" d="M182 156 L232 156"/>
+  <path class="edge" d="M362 156 L412 156"/>
+  <path class="edge" d="M477 184 L477 252"/>
+  <path class="edge" d="M477 308 L477 376"/>
+  <path class="edge" d="M542 404 L642 404"/>
+  <path class="edge" d="M772 404 L822 404"/>
+  <path class="edge" d="M887 376 L887 308"/>
+  <path class="edge" d="M642 238 C590 210 544 178 542 156"/>
+  <path class="edge" d="M707 282 C690 324 682 354 707 376"/>
+  <text class="small" x="52" y="474">输入设备经预输入程序把作业信息放入输入井；作业调度程序选择作业进入运行；运行结果经输出井和缓输出程序送往输出设备。</text>
+  <text class="small" x="52" y="496">井管理程序协调输入井、输出井与运行作业之间的数据。</text>
+</svg>
