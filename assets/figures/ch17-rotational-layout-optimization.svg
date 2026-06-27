@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">旋转等待与数据布局优化</title>
+  <desc id="desc">用同一磁道上的扇区顺序、间隔和柱面斜进说明如何减少旋转等待。</desc>
+  <rect width="920" height="430" fill="#fbfaf6"/>
+  <text x="40" y="46" font-size="24" font-family="sans-serif" fill="#202733">把等待时间变成排列问题</text>
+  <text x="40" y="76" font-size="14" font-family="sans-serif" fill="#667085">盘面一直在转，控制器和 CPU 也需要处理时间；布局优化是在下一次可读时让目标扇区正好到达。</text>
+
+  <circle cx="180" cy="210" r="92" fill="#fff" stroke="#6f8f72" stroke-width="3"/>
+  <circle cx="180" cy="210" r="18" fill="#dfeadb" stroke="#6f8f72"/>
+  <text x="176" y="106" font-size="15" font-family="sans-serif" fill="#2f5d33">1</text>
+  <text x="270" y="216" font-size="15" font-family="sans-serif" fill="#2f5d33">2</text>
+  <text x="176" y="318" font-size="15" font-family="sans-serif" fill="#2f5d33">3</text>
+  <text x="82" y="216" font-size="15" font-family="sans-serif" fill="#2f5d33">4</text>
+  <path d="M210 114 A92 92 0 0 1 272 185" fill="none" stroke="#2f5d33" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="60" y="356" font-size="13" font-family="sans-serif" fill="#2f5d33">当前读位置会改变最优读取顺序</text>
+  <text x="60" y="376" font-size="13" font-family="sans-serif" fill="#2f5d33">旋转等待可由请求重排显著减少</text>
+
+  <rect x="365" y="116" width="230" height="178" rx="8" fill="#eef3ff" stroke="#5a78b5"/>
+  <text x="386" y="146" font-size="17" font-family="sans-serif" fill="#28466f">优化分布与间隔</text>
+  <text x="386" y="179" font-size="13" font-family="sans-serif" fill="#28466f">A H E B I F C J G D</text>
+  <line x1="386" y1="200" x2="560" y2="200" stroke="#5a78b5" stroke-width="2"/>
+  <circle cx="386" cy="200" r="5" fill="#5a78b5"/>
+  <circle cx="426" cy="200" r="5" fill="#5a78b5"/>
+  <circle cx="466" cy="200" r="5" fill="#5a78b5"/>
+  <circle cx="506" cy="200" r="5" fill="#5a78b5"/>
+  <circle cx="546" cy="200" r="5" fill="#5a78b5"/>
+  <text x="386" y="230" font-size="13" font-family="sans-serif" fill="#28466f">逻辑记录排列应考虑读出后的处理时间</text>
+  <text x="386" y="250" font-size="13" font-family="sans-serif" fill="#28466f">4ms 处理时间对应 10 块磁道上的两个块间隔</text>
+  <text x="386" y="276" font-size="13" font-family="sans-serif" fill="#28466f">扇区读出后校验会消耗时间</text>
+  <text x="386" y="296" font-size="13" font-family="sans-serif" fill="#28466f">增加扇区间隔可减少错过下一个连续扇区的风险</text>
+
+  <rect x="660" y="116" width="220" height="178" rx="8" fill="#fff2e8" stroke="#c87941"/>
+  <text x="682" y="146" font-size="17" font-family="sans-serif" fill="#7a3e17">柱面斜进</text>
+  <line x1="690" y1="188" x2="840" y2="188" stroke="#c87941" stroke-width="3"/>
+  <line x1="690" y1="230" x2="840" y2="230" stroke="#c87941" stroke-width="3"/>
+  <text x="698" y="180" font-size="12" font-family="sans-serif" fill="#7a3e17">0 1 2 3 4 5</text>
+  <text x="722" y="222" font-size="12" font-family="sans-serif" fill="#7a3e17">2 3 4 5 0 1</text>
+  <path d="M842 188 C866 198 866 220 842 230" fill="none" stroke="#7a3e17" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="682" y="268" font-size="13" font-family="sans-serif" fill="#7a3e17">柱面切换时磁头臂移动会消耗时间</text>
+  <text x="682" y="288" font-size="13" font-family="sans-serif" fill="#7a3e17">斜进通过编号偏移保持连续扇区读取</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f5d33"/>
+    </marker>
+  </defs>
+</svg>

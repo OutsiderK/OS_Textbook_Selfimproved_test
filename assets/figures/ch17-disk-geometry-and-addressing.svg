@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">磁盘几何、扇区结构与地址定位</title>
+  <desc id="desc">展示顺序设备、随机存取磁盘、扇区字段、坏扇区重映射以及 CHS 到 LBA 的定位关系。</desc>
+  <rect width="920" height="520" fill="#f8faf7"/>
+  <text x="38" y="46" font-size="24" font-family="sans-serif" fill="#1f2933">位置如何变成一次磁盘访问</text>
+  <text x="38" y="76" font-size="14" font-family="sans-serif" fill="#5b6472">同一条 I/O 请求，在顺序设备、CHS 磁盘和 LBA 视角下看到的是不同的定位语言。</text>
+
+  <rect x="38" y="106" width="240" height="120" rx="8" fill="#e8f1ea" stroke="#5b8c6a"/>
+  <text x="58" y="134" font-size="17" font-family="sans-serif" fill="#244232">顺序设备</text>
+  <line x1="66" y1="174" x2="250" y2="174" stroke="#244232" stroke-width="4"/>
+  <circle cx="72" cy="174" r="8" fill="#244232"/>
+  <rect x="98" y="154" width="34" height="40" fill="#ffffff" stroke="#5b8c6a"/>
+  <rect x="150" y="154" width="34" height="40" fill="#ffffff" stroke="#5b8c6a"/>
+  <rect x="202" y="154" width="34" height="40" fill="#ffffff" stroke="#5b8c6a"/>
+  <text x="103" y="212" font-size="12" font-family="sans-serif" fill="#244232">块1</text>
+  <text x="155" y="212" font-size="12" font-family="sans-serif" fill="#244232">块2</text>
+  <text x="207" y="212" font-size="12" font-family="sans-serif" fill="#244232">块3</text>
+  <text x="58" y="246" font-size="13" font-family="sans-serif" fill="#244232">顺序设备严格依赖信息物理位置定位和读写</text>
+  <text x="58" y="266" font-size="13" font-family="sans-serif" fill="#244232">磁带机存在磁头正走/反走、正读/反读、正写/反写和倒带等操作</text>
+
+  <rect x="332" y="106" width="250" height="230" rx="8" fill="#eef3fa" stroke="#5878a8"/>
+  <text x="352" y="134" font-size="17" font-family="sans-serif" fill="#243b63">随机存取磁盘</text>
+  <circle cx="457" cy="224" r="76" fill="#ffffff" stroke="#5878a8" stroke-width="3"/>
+  <circle cx="457" cy="224" r="48" fill="none" stroke="#9bb0cf" stroke-width="2"/>
+  <circle cx="457" cy="224" r="18" fill="#d9e5f6" stroke="#5878a8"/>
+  <line x1="457" y1="224" x2="533" y2="224" stroke="#5878a8" stroke-width="2"/>
+  <line x1="457" y1="224" x2="495" y2="158" stroke="#5878a8" stroke-width="2"/>
+  <text x="384" y="314" font-size="13" font-family="sans-serif" fill="#243b63">磁道是在一个盘面上读写磁头的轨迹</text>
+  <text x="384" y="332" font-size="13" font-family="sans-serif" fill="#243b63">柱面由同一磁头位置下所有盘片的磁道组成</text>
+  <text x="352" y="162" font-size="12" font-family="sans-serif" fill="#243b63">移动臂 / 磁头定位柱面</text>
+  <path d="M545 142 L574 104" stroke="#243b63" stroke-width="4"/>
+  <circle cx="540" cy="148" r="7" fill="#243b63"/>
+
+  <rect x="632" y="106" width="250" height="150" rx="8" fill="#fff7e6" stroke="#c78a2d"/>
+  <text x="652" y="134" font-size="17" font-family="sans-serif" fill="#6f4518">扇区与坏块</text>
+  <rect x="654" y="160" width="62" height="48" fill="#fff" stroke="#c78a2d"/>
+  <rect x="716" y="160" width="96" height="48" fill="#fff" stroke="#c78a2d"/>
+  <rect x="812" y="160" width="48" height="48" fill="#fff" stroke="#c78a2d"/>
+  <text x="665" y="189" font-size="12" font-family="sans-serif" fill="#6f4518">前导码</text>
+  <text x="744" y="189" font-size="12" font-family="sans-serif" fill="#6f4518">数据块</text>
+  <text x="824" y="189" font-size="12" font-family="sans-serif" fill="#6f4518">ECC</text>
+  <text x="652" y="230" font-size="13" font-family="sans-serif" fill="#6f4518">前导码用于识别扇区开始位置并记录柱面号、扇区号</text>
+  <text x="652" y="248" font-size="13" font-family="sans-serif" fill="#6f4518">ECC 用于错误校验</text>
+  <text x="652" y="278" font-size="13" font-family="sans-serif" fill="#6f4518">坏扇区可被重映射到替换扇区</text>
+  <text x="652" y="296" font-size="13" font-family="sans-serif" fill="#6f4518">备用扇区用于隐藏物理坏块</text>
+
+  <rect x="38" y="370" width="390" height="110" rx="8" fill="#f1eef8" stroke="#8064a2"/>
+  <text x="58" y="398" font-size="17" font-family="sans-serif" fill="#4b3568">CHS 传统定位</text>
+  <text x="58" y="426" font-size="13" font-family="sans-serif" fill="#4b3568">CHS 访问物理记录需要柱面号、磁头号、扇区号</text>
+  <text x="58" y="446" font-size="13" font-family="sans-serif" fill="#4b3568">扇区号从 1 开始编号</text>
+  <text x="58" y="466" font-size="13" font-family="sans-serif" fill="#4b3568">现代磁盘支持 LBA 逻辑块寻址</text>
+
+  <rect x="486" y="370" width="396" height="110" rx="8" fill="#edf7f7" stroke="#3d8888"/>
+  <text x="506" y="398" font-size="17" font-family="sans-serif" fill="#245b5b">几何参数与时间参数</text>
+  <text x="506" y="426" font-size="13" font-family="sans-serif" fill="#245b5b">每磁道等扇区数会让外圈线密度低于内圈</text>
+  <text x="506" y="446" font-size="13" font-family="sans-serif" fill="#245b5b">每磁道等密度可提高外圈容量利用</text>
+  <text x="506" y="466" font-size="13" font-family="sans-serif" fill="#245b5b">软盘与硬盘可从几何参数和时间参数两类维度比较</text>
+  <text x="506" y="486" font-size="13" font-family="sans-serif" fill="#245b5b">硬盘示例容量约 300 GB，软盘示例容量 360 KB</text>
+</svg>

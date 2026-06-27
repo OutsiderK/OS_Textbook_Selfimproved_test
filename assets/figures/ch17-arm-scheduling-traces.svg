@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">移动臂调度轨迹</title>
+  <desc id="desc">比较 SSTF 和电梯调度在同一请求序列下的访问顺序与移动量。</desc>
+  <rect width="920" height="430" fill="#f8fbfd"/>
+  <text x="42" y="48" font-size="24" font-family="sans-serif" fill="#1f2937">同一组请求，不同的移动臂轨迹</text>
+  <text x="42" y="78" font-size="14" font-family="sans-serif" fill="#667085">当前柱面为 11，请求为 1、36、16、34、9、12。算法改变的是下一步服务谁。</text>
+
+  <line x1="78" y1="164" x2="842" y2="164" stroke="#9aa6b2" stroke-width="2"/>
+  <line x1="78" y1="292" x2="842" y2="292" stroke="#9aa6b2" stroke-width="2"/>
+  <text x="78" y="138" font-size="14" font-family="sans-serif" fill="#344054">SSTF: 11-12-9-16-1-34-36</text>
+  <text x="78" y="266" font-size="14" font-family="sans-serif" fill="#344054">电梯: 11-12-16-34-36-9-1</text>
+
+  <polyline points="280,164 302,164 235,164 391,164 102,164 791,164 836,164" fill="none" stroke="#2f7d57" stroke-width="4"/>
+  <polyline points="280,292 302,292 391,292 791,292 836,292 235,292 102,292" fill="none" stroke="#b05640" stroke-width="4"/>
+  <g font-family="sans-serif" font-size="12" fill="#344054">
+    <text x="273" y="190">11</text><text x="296" y="190">12</text><text x="229" y="190">9</text><text x="385" y="190">16</text><text x="96" y="190">1</text><text x="785" y="190">34</text><text x="829" y="190">36</text>
+    <text x="273" y="318">11</text><text x="296" y="318">12</text><text x="385" y="318">16</text><text x="785" y="318">34</text><text x="829" y="318">36</text><text x="229" y="318">9</text><text x="96" y="318">1</text>
+  </g>
+
+  <rect x="540" y="96" width="320" height="78" rx="8" fill="#e8f5ee" stroke="#2f7d57"/>
+  <text x="560" y="124" font-size="14" font-family="sans-serif" fill="#245b43">SSTF 每步选择离当前磁头最近的请求</text>
+  <text x="560" y="148" font-size="14" font-family="sans-serif" fill="#245b43">例题总移动量为 61 个柱面</text>
+
+  <rect x="540" y="224" width="320" height="78" rx="8" fill="#fff0ea" stroke="#b05640"/>
+  <text x="560" y="252" font-size="14" font-family="sans-serif" fill="#78311f">电梯算法保持当前方向服务，走到一端后再反向</text>
+  <text x="560" y="276" font-size="14" font-family="sans-serif" fill="#78311f">例题总移动量为 60 个柱面</text>
+
+  <rect x="78" y="346" width="782" height="48" rx="8" fill="#eef2ff" stroke="#6172b7"/>
+  <text x="98" y="376" font-size="14" font-family="sans-serif" fill="#34427a">综合例题同时考虑柱面移动、磁头切换和扇区循环排序；课件给出的访问顺序为 5,3,2,1,4</text>
+</svg>
