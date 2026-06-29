@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">缓冲技术对照</title>
+  <desc id="desc">缓冲区位于内核空间时可先吸收设备数据，双缓冲允许两个缓冲区轮流服务数据流。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#263238"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif; fill: #182024; }
+      .bg { fill: #f8faf7; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 2; rx: 8; }
+      .soft { fill: #e7f1ef; stroke: #507c75; stroke-width: 2; rx: 8; }
+      .warn { fill: #fff4df; stroke: #a17228; stroke-width: 2; rx: 8; }
+      .line { stroke: #263238; stroke-width: 2.4; marker-end: url(#arrow); fill: none; }
+      .dash { stroke: #64748b; stroke-width: 2; stroke-dasharray: 6 5; marker-end: url(#arrow); fill: none; }
+      .label { font-size: 22px; font-weight: 700; }
+      .small { font-size: 16px; }
+      .tiny { font-size: 14px; fill: #475569; }
+    </style>
+  </defs>
+  <rect class="bg" width="960" height="500"/>
+  <text class="label" x="48" y="48">缓冲：先吸收，再成批交付</text>
+
+  <rect class="box" x="70" y="118" width="170" height="70"/>
+  <text class="small" x="155" y="150" text-anchor="middle">Modem / 设备</text>
+  <text class="tiny" x="155" y="172" text-anchor="middle">慢速或不均匀到达</text>
+
+  <rect class="warn" x="392" y="86" width="176" height="104"/>
+  <text class="small" x="480" y="120" text-anchor="middle">内核空间</text>
+  <rect class="soft" x="418" y="136" width="124" height="36"/>
+  <text class="tiny" x="480" y="159" text-anchor="middle">单缓冲</text>
+  <text class="tiny" x="480" y="216" text-anchor="middle">缓冲区位于内核空间时可先吸收设备数据</text>
+
+  <rect class="box" x="720" y="118" width="170" height="70"/>
+  <text class="small" x="805" y="150" text-anchor="middle">用户空间</text>
+  <text class="tiny" x="805" y="172" text-anchor="middle">进程一次取走记录</text>
+
+  <path class="line" d="M240 153 H392"/>
+  <path class="line" d="M568 153 H720"/>
+
+  <rect class="warn" x="332" y="296" width="296" height="112"/>
+  <text class="small" x="480" y="326" text-anchor="middle">双缓冲</text>
+  <rect class="soft" x="366" y="350" width="96" height="36"/>
+  <text class="tiny" x="414" y="373" text-anchor="middle">缓冲 A</text>
+  <rect class="soft" x="498" y="350" width="96" height="36"/>
+  <text class="tiny" x="546" y="373" text-anchor="middle">缓冲 B</text>
+  <path class="dash" d="M240 382 H332"/>
+  <path class="dash" d="M628 382 H720"/>
+  <text class="tiny" x="326" y="444">双缓冲允许两个缓冲区轮流服务数据流</text>
+  <text class="tiny" x="66" y="462">一个缓冲区接收设备数据时，另一个缓冲区可被用户进程读取。</text>
+</svg>
