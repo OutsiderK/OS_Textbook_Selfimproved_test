@@ -3,6 +3,7 @@ id: ch04-os-structure-and-kernels
 title: 操作系统的结构与内核
 order: 4
 source_batches: ['001']
+harness_test: 'milestone-c-canary-001'
 assumes:
   - 用户态与核心态
   - 系统调用接口
